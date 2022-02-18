@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>网页建设中</title>
+</head>
+<body>
+<p>
+    <span>网页建设中</span>
+	<span id = "time">5</span>秒后，跳转到主页
+	</p>
+<script>
+    var time = 5 ;
+
+		function showTime (){
+
+			time--;
+			if(time<=0){
+				//clearInterval(id);
+
+				location.href = "https://si1entsuzuka.github.io/";
+			}
+			var sp = document.getElementById("time");
+			sp.innerHTML = time ;
+		}
+
+		var id = setInterval(showTime,1000);
+
+
+</script>
+</body>
+</html>
