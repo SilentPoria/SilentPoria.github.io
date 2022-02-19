@@ -287,7 +287,8 @@
       this.end();
       this.showAll();
       this.disableAll();
-      alert('Congratulation£¡');
+      alert('Congratulation!');
+       window.location.reload();
     },
     //ÓÎÏ·Ê§°Ü
     failed: function () {
@@ -295,6 +296,8 @@
       this.showAll();
       this.disableAll();
       alert('GAME OVER!');
+       window.location.reload();
+
     },
     //Èë¿Ú
     play: function () {
