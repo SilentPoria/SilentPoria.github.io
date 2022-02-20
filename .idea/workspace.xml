@@ -25,18 +25,20 @@
   <component name="PropertiesComponent">
     <property name="DefaultHtmlFileTemplate" value="HTML File" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/images" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
   </component>
   <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\GITHUB" />
+      <recent name="D:\GITHUB\img\Airwar" />
+      <recent name="D:\GITHUB\images" />
+    </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="D:\GITHUB\js\Airwar" />
       <recent name="D:\GITHUB\images" />
       <recent name="D:\GITHUB\logo" />
       <recent name="D:\GITHUB" />
       <recent name="D:\GITHUB\loadfile" />
-    </key>
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="D:\GITHUB\images" />
-      <recent name="D:\GITHUB" />
     </key>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
