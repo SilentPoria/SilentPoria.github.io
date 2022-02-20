@@ -25,7 +25,7 @@
   <component name="PropertiesComponent">
     <property name="DefaultHtmlFileTemplate" value="HTML File" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/images" />
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
@@ -35,6 +35,7 @@
       <recent name="D:\GITHUB\loadfile" />
     </key>
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\GITHUB\images" />
       <recent name="D:\GITHUB" />
     </key>
   </component>
