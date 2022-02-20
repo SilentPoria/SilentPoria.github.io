@@ -33,16 +33,21 @@ background: #D6D6D4;
 color: #adacaa;
 }
 #result-wrap {text-align: center;}
-
+.nono{
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        -o-user-select: none;
+        user-select: none;
+        }
 </style>
 </head>
 <body>
 <h2><a href="https://si1entsuzuka.github.io">返回主页</a></h2>
-<h3 id="result-wrap">-----人机五子棋-----</h3>
-<canvas id="chess" width="450px" height="450px" ></canvas>
+<h3 id="result-wrap" class="nono">-----人机五子棋-----</h3>
+<canvas id="chess" width="450px" height="450px" class="nono"></canvas>
 <div class="btn-wrap">
-<div id='restart' class="restart">
-<span>重新开始</span>
+<div id='restart' class="restart" class="nono">
+<span class="nono">重新开始</span>
 </div>
 <div id='goback' class="goback unable">
 

@@ -10,7 +10,7 @@
     <script></script>
     <style type="text/css">
     body {
-    	height: 0;
+    	height: 100%;
         margin: 0;
         text-align: center;
         overflow: hidden;
@@ -19,17 +19,23 @@
     canvas {
         background-color: #ddd;
     }
+    .nono{
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        -o-user-select: none;
+        user-select: none;
+        }
     </style>
 </head>
 
 <body style="overflow:hidden">
-    <h2><a href="https://si1entsuzuka.github.io">返回主页</a></h2>
-    <canvas id='canvas'>
+    <h2 class="nono"><a href="https://si1entsuzuka.github.io">返回主页</a></h2>
+    <canvas id='canvas' class="nono">
         您的浏览器不支持canvas绘图！
     </canvas>
     <div id="div"></div>
     <script type="text/javascript" src='js/Airwar/app_v2.js'></script>
 </body>
-<p>本程序源自github by xs528</p>
-<p>适配网站 by si1entSuzuka</p>
+<p class="nono">本程序源自github by xs528</p>
+<p class="nono">适配网站 by si1entSuzuka</p>
 </html>
