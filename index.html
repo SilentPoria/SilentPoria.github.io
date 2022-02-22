@@ -3,8 +3,11 @@
 <head>
 <title>Home</title>
 <meta charset="utf-8" />
+<meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests"/>
 <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
 <link rel="stylesheet" href="assets/css/main.css" />
+<link rel="stylesheet" href="assets/css/music.css" />
+<link rel="stylesheet" href="assets/css/float.css" />
 <link rel="icon" type="image/png" sizes="144x144" href="./logo/index_logo.png"/>
 <noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
 <style type="text/css">
@@ -18,7 +21,8 @@
 
 </style>
 </head>
-<body class="is-preload">
+<body class="is-preload" >
+
 <!-- Wrapper -->
 <div id="wrapper">
 
@@ -161,7 +165,9 @@
 		</footer>
 
 </div>
-
+<div style='position:fixed;z-index:999; top:0;' id="box" >
+<audio autoplay="autoplay" src="https://api.paugram.com/acgm/?play=true" id="share" loop="loop" controls='controls'></audio>
+</div>
 <!-- BG -->
 <div id="bg"></div>
 
