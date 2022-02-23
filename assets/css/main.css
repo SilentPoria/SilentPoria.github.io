@@ -1444,6 +1444,7 @@ input, select, textarea {
 
 				#header .logo .icon:before {
 					font-size: 1.75rem;
+					background : url('../../logo/index_logo.png')
 				}
 
 			#header .content .inner {
