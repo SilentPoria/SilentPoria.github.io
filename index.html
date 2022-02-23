@@ -43,11 +43,12 @@
 			</div>
 			<nav>
 				<ul>
-					<li><a href="#intro">homePage</a></li>
-					<li><a href="#work">feedback</a></li>
+					<li><a href="#homePage">homePage</a></li>
+					<li><a href="#feedback">feedback</a></li>
 					<li><a href="#about">About us</a></li>
-					<li><a href="#contact">The log</a></li>
-					<li><a href="#elements">blogroll</a></li>
+					<li><a href="#log">The log</a></li>
+					<li><a href="#blogroll">blogroll</a></li>
+					<li><a href="#music">music</a></li>
 					<!--<li><a href="#elements">Elements</a></li>-->
 				</ul>
 			</nav>
@@ -56,8 +57,8 @@
 	<!-- Main -->
 		<div id="main">
 
-			<!-- Intro -->
-				<article id="intro">
+			<!-- homePage -->
+				<article id="homePage">
 					<h2 class="major" class="nono">homePage</h2>
 					<span class="image main"></span>
 					<p class="nono">学习网址集合：<a href="https://si1entsuzuka.github.io/study">点击这里</a>></p>
@@ -66,8 +67,8 @@
 					<p></p>
 				</article>
 
-			<!-- Work -->
-				<article id="work" class="nono">
+			<!-- feedback -->
+				<article id="feedback" class="nono">
 					<h2 class="major" class="nono">feedback</h2>
 					<p class="nono">反馈邮箱2785609571@qq.com</p>
 					<p class="nono">感谢您的反馈</p>
@@ -86,8 +87,8 @@
 					<p>
 				</article>
 
-			<!-- Contact -->
-				<article id="contact">
+			<!-- log -->
+				<article id="log">
 					<h2 class="major">The log</h2>
 
 					<form method="post" action="#">
@@ -131,16 +132,13 @@
 										<p>主界面句子进行了随机化</p>
 										<p>新增友情链接</p>
 								</div>
-
 							</div>
 						</div>
-
 					</form>
-
 				</article>
 
-			<!-- Elements -->
-				<article id="elements">
+			<!-- blogroll -->
+				<article id="blogroll">
 					<h2 class="major">blogroll</h2>
 
 					<section>
@@ -157,6 +155,16 @@
 						</blockquote>
 					</section>
 				</article>
+
+			<!-- music -->
+				<article id="music">
+					<h2 class="major">music</h2>
+					<audio autoplay="autoplay" src="https://api.paugram.com/acgm/?list=1&play=true" id="share" loop="loop" controls='controls' volume="0.5"></audio>
+					<div>
+						<button onclick="rbf()">切歌</button>
+					<div>
+					<br>
+				</article>
 		</div>
 
 	<!-- Footer -->
@@ -165,9 +173,7 @@
 		</footer>
 
 </div>
-<div style='position:fixed;z-index:999; top:0;' id="box" >
-<audio autoplay="autoplay" src="https://api.paugram.com/acgm/?play=true" id="share" loop="loop" controls='controls'></audio>
-</div>
+
 <!-- BG -->
 <div id="bg"></div>
 
@@ -182,7 +188,7 @@
 <script src="https://cdn.bootcss.com/fetch/2.0.3/fetch.min.js"></script>
 <!--End-->
 <script>
-  fetch('https://v1.hitokoto.cn/?c=b')
+	fetch('https://v1.hitokoto.cn/?c=b')
     .then(function (res){
       return res.json();
     })
@@ -190,7 +196,7 @@
       var hitokoto = document.getElementById('hitokoto');
       var sfrom = document.getElementById('sfrom');
       hitokoto.innerText = data.hitokoto;
-      sfrom.innerText = 'from'+'—— 「'+data.from+"」"
+      sfrom.innerText = 'from'+'----「'+data.from+"」"
     })
     .catch(function (err) {
       console.error(err);
@@ -204,6 +210,15 @@
 		function n() {
 			var t = "function" == typeof e.onclick && e.onclick;e.onclick = function (e) {t && t(), o(e)}}function o(e) {var a = t.createElement("div");a.className = "heart", s.push({el: a,x: e.clientX - 5,y: e.clientY - 5,scale: 1,alpha: 1,color: c()}), t.body.appendChild(a)}function i(e) {var a = t.createElement("style");a.type = "text/css";try {a.appendChild(t.createTextNode(e))} catch (t) {a.styleSheet.cssText = e}t.getElementsByTagName("head")[0].appendChild(a)}function c() {return "rgb(" + ~~(255 * Math.random()) + "," + ~~(255 * Math.random()) + "," + ~~(255 * Math.random()) + ")"}var s = [];e.requestAnimationFrame = e.requestAnimationFrame || e.webkitRequestAnimationFrame || e.mozRequestAnimationFrame || e.oRequestAnimationFrame || e.msRequestAnimationFrame || function (e) {setTimeout(e, 1e3 / 60)}, i(".heart{width: 10px;height: 10px;position: fixed;background: #f00;transform: rotate(45deg);-webkit-transform: rotate(45deg);-moz-transform: rotate(45deg);}.heart:after,.heart:before{content: '';width: inherit;height: inherit;background: inherit;border-radius: 50%;-webkit-border-radius: 50%;-moz-border-radius: 50%;position: fixed;}.heart:after{top: -5px;}.heart:before{left: -5px;}"), n(), r()}(window, document);
 
+</script>
+<script type="text/javascript">
+
+ function rbf() {
+ 			var audio = document.getElementById('share');
+            audio.src='https://api.paugram.com/acgm/?list=1&play=true'
+            audio.load()
+
+        }
 </script>
 </body>
 </html>
