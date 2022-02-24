@@ -25,21 +25,21 @@
   <component name="PropertiesComponent">
     <property name="DefaultHtmlFileTemplate" value="HTML File" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
-    <property name="last_opened_file_path" value="C:/pythonWork" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="settings.editor.selected.configurable" value="preferences.fileTypes" />
   </component>
   <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\GITHUB" />
+      <recent name="D:\GITHUB\img\Airwar" />
+      <recent name="D:\GITHUB\images" />
+    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="D:\GITHUB\img" />
       <recent name="D:\GITHUB\images\index" />
       <recent name="D:\GITHUB\临时废弃" />
       <recent name="D:\GITHUB\css\reHome" />
       <recent name="D:\GITHUB\js\Airwar" />
-    </key>
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="D:\GITHUB" />
-      <recent name="D:\GITHUB\img\Airwar" />
-      <recent name="D:\GITHUB\images" />
     </key>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
@@ -54,10 +54,10 @@
     <servers />
   </component>
   <component name="WindowStateProjectService">
-    <state x="287" y="326" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1645599588034">
+    <state x="287" y="326" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1645632891069">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="287" y="326" key="#com.intellij.fileTypes.FileTypeChooser/0.0.1920.1040@0.0.1920.1040" timestamp="1645599588034" />
+    <state x="287" y="326" key="#com.intellij.fileTypes.FileTypeChooser/0.0.1920.1040@0.0.1920.1040" timestamp="1645632891069" />
     <state x="1220" y="275" key="FileChooserDialogImpl" timestamp="1645622870437">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
