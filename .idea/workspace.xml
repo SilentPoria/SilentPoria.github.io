@@ -25,11 +25,12 @@
   <component name="PropertiesComponent">
     <property name="DefaultHtmlFileTemplate" value="HTML File" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
-    <property name="settings.editor.selected.configurable" value="preferences.fileTypes" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/assets/js" />
+    <property name="settings.editor.selected.configurable" value="fileTemplates" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\GITHUB\assets\js" />
       <recent name="D:\GITHUB" />
       <recent name="D:\GITHUB\img\Airwar" />
       <recent name="D:\GITHUB\images" />
@@ -62,10 +63,10 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="1220" y="275" key="FileChooserDialogImpl/0.0.1920.1040@0.0.1920.1040" timestamp="1645622870437" />
-    <state x="722" y="0" width="998" height="1001" key="SettingsEditor" timestamp="1645599941457">
+    <state x="881" y="39" width="998" height="1001" key="SettingsEditor" timestamp="1645674897256">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="722" y="0" width="998" height="1001" key="SettingsEditor/0.0.1920.1040@0.0.1920.1040" timestamp="1645599941457" />
+    <state x="881" y="39" width="998" height="1001" key="SettingsEditor/0.0.1920.1040@0.0.1920.1040" timestamp="1645674897256" />
     <state x="953" y="0" width="974" height="1047" key="dock-window-1" timestamp="1645506676046">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>

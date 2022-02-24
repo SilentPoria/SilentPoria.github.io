@@ -31,10 +31,9 @@
 			<div class="content">
 				<div class="inner">
 					<h1 class="nono">Welcome to Si1lentSuzuka's site!</h1>
-					<div>
+					<div id="appear">
 						<a href="https://hitokoto.cn/">『<span class='nono' id="hitokoto">我又不是因为你们的评价才去当的英雄，是因为我想当才去当的</span>』<br>
-						<a href="https://hitokoto.cn/" id="sfrom">from ——「一拳超人」</a>
-
+						<a href="https://hitokoto.cn/">from ——「<span id="sfrom">一拳超人</span>」</a>
 					</div>
 				</div>
 			</div>
@@ -133,28 +132,14 @@
 <script src="assets/js/main.js"></script>
 <script src="https://cdn.bootcss.com/bluebird/3.5.1/bluebird.core.min.js"></script>
 <script src="https://cdn.bootcss.com/fetch/2.0.3/fetch.min.js"></script>
-<script type="text/javascript" src="./assets/js/click.js"></script>
-<script type="text/javascript" src="./assets/js/click.js" charset="gb2312"></script>
-
-<script>
-	fetch('https://v1.hitokoto.cn/?c=b')
-    .then(function (res){
-      return res.json();
-    })
-    .then(function (data) {
-      var hitokoto = document.getElementById('hitokoto');
-      var sfrom = document.getElementById('sfrom');
-      hitokoto.innerText = data.hitokoto;
-      sfrom.innerText = 'from'+' ——「'+data.from+"」"
-    })
-    .catch(function (err) {
-      console.error(err);
-    })
-</script>
-
-
+<!--点击特效-->
+<script src="./assets/js/click.js"></script>
+<!--文本动画处理-->
+<script type="text/javascript" src="./assets/js/disappear.js"></script><!--句子消失-->
+<script type="text/javascript" src="./assets/js/appear.js"></script><!--句子出现-->
+<script src="./assets/js/fetchG.js"></script><!--句子出现-->
+<!--切歌-->
 <script type="text/javascript">
-
  function rbf() {
  			var audio = document.getElementById('share');
             audio.src='https://api.paugram.com/acgm/?list=1&play=true'
@@ -162,7 +147,31 @@
 
         }
 </script>
-<script></script>
+<!--获取文字-->
+<script type="text/javascript">
+	fetch('https://v1.hitokoto.cn/?c=b&c=c&c=a')
+    .then(function (res){
+      return res.json();
+    })
+    .then(function (data) {
+      var hitokoto = document.getElementById('hitokoto');
+      var sfrom = document.getElementById('sfrom');
+      hitokoto.innerText = data.hitokoto;
+      sfrom.innerText = data.from
+    })
+
+</script>
+<!--刷新文字-->
+<script type="text/javascript">
+var i =setTimeout(function () {
+	setInterval(() => {
+		disappear()
+		fetchG()
+		appear()
+	}, 60000);
+}, 1000)
+</script>
+
 <!--End-->
 </body>
 </html>
