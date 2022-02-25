@@ -1,279 +1,102 @@
-<!doctype html>
-<meta name="keywords" content="2048"/>
-<meta http-equiv="content-Type" content="text/html;charset=gb2312"/>
-
 
 <html>
+
 <head>
-<title>2048</title>
-<style>
-.up,.down,.left,.right{
-font-size:30px;
+	<meta charset="utf-8">
+    <meta charset="utf-8" name="viewport" content="width=device-width,initial-scale=0.75,maximum-scale=1.0,minimum-scale=0.1,user-scalable=no"/>
+	<title>2048小游戏</title>
+	<link  href="../css/2048/2048.css"  media="all" rel="stylesheet" />
+    <style>
+        .centrol{
+        text-align:center
+            }
+        input{
+			width: 140px;
+			line-height: 38px;
+			text-align: center;
+			font-weight: bold;
+			color: #fff;
+			text-shadow:1px 1px 1px #333;
+			border-radius: 5px;
+			margin:0 20px 20px 0;
+			position: relative;
+			overflow: hidden;
+			}
 
 
-}
-canvas{
-border-style:solid;
-float:left;
-}
-.right{float:left;
-margin-top:80px;
-margin-left:400px;
-height:100px;
-width:50px;
-}
-.down,.up{
 
-margin-left:550px;
-}
-.left{
-margin-top:80px;
-margin-bottom:100px;
-
-}
-
-</style>
-<link rel="icon" type="image/png" sizes="144x144" href="./logo/2048.jpg"/>
+    </style>
 </head>
 
 
 <body>
-<h1 align=center>2048小游戏</h1>
-<div class="down" onclick="down()">down  </div>
-<div class="right" onclick="right()">right  </div>
-<canvas id="drawing" height=200px width=200px ></canvas>
-<div class="left" onclick="left()">left  </div>
-<div class="up" onclick="up()">up  </div>
-<script>
-var tArray=new Array();
-for(var i=0;i<4;i++){
-tArray[i]=new Array();
-for(var t=0;t<4;t++){
-tArray[i][t]="";
-}
-}
-var locx;var locy;
-function produce(){
-locx=Math.ceil(Math.random()*4-1);
-locy=Math.ceil(Math.random()*4-1);
-if(locx==-1||locy==-1||tArray[locx][locy]!=""){
-produce();
-}
-}
-produce();
-tArray[locx][locy]=2;
-produce();
-tArray[locx][locy]=4;
-var drawing=document.getElementById("drawing");
-if(drawing.getContext){
-var context=drawing.getContext("2d");
-context.beginPath();
-context.lineWidth=0.25;
-for(var t2=0;t2<3;t2++){
-context.moveTo(50+t2*50,0);
-context.lineTo(50+t2*50,200);
-}
-for(var i2=0;i2<3;i2++){
-context.moveTo(0,50+i2*50);
-context.lineTo(200,50+i2*50);
-}
-
-context.stroke();
-
-
-
-}
-
-function display(){
-for(var t1=0;t1<4;t1++){
-for(var i1=0;i1<4;i1++){
-context.clearRect(50*t1,50*i1,50,50);
-context.strokeRect(50*t1,50*i1,50,50);
-context.fillText(tArray[t1][i1],20+50*t1,30+50*i1);
-}
-}
-
-}
-display();
-var zeno=0;
-function down(){
-
-for(var t3=0;t3<4;t3++){
-for(var i3=0;i3<4;i3++){
-if(tArray[t3][i3]==""){
-zeno++;
-}
-else if((zeno!=0)&&(i3>zeno)&&(tArray[t3][i3-1-zeno]==tArray[t3][i3])){
-tArray[t3][i3-1-zeno]=tArray[t3][i3-1-zeno]+tArray[t3][i3];
-tArray[t3][i3]="";
-zeno++;
-}
-else{
-
-if(tArray[t3][i3+1]==tArray[t3][i3]){
-tArray[t3][i3]=tArray[t3][i3]+tArray[t3][i3+1];
-tArray[t3][i3+1]="";
-
-}
-
-
-if(zeno!=0){
-tArray[t3][i3-zeno]=tArray[t3][i3];
-tArray[t3][i3]="";
-}
-
-
-}
-
-
-
-
-
-}
-
-
-zeno=0;
-}
-output();
-display();
-zeno=0;
-}
-
-function up(){
-for(var t3=0;t3<4;t3++){
-for(var i3=3;i3>=0;i3--){
-if(tArray[t3][i3]==""){
-zeno++;
-}
-else if((zeno!=0)&&(tArray[t3][i3+1+zeno]==tArray[t3][i3])){
-tArray[t3][i3+1+zeno]=tArray[t3][i3+1+zeno]+tArray[t3][i3];
-tArray[t3][i3]="";
-zeno++;
-}
-else{
-
-if(i3>0&&tArray[t3][i3-1]==tArray[t3][i3]){
-tArray[t3][i3]=tArray[t3][i3]+tArray[t3][i3-1];
-tArray[t3][i3-1]="";
-
-}
-
-
-if(zeno!=0){
-tArray[t3][i3+zeno]=tArray[t3][i3];
-tArray[t3][i3]="";
-}
-
-
-}
-
-
-
-
-
-}
-
-
-zeno=0;
-}
-output();
-display();
-zeno=0;
-}
-
-function right(){
-for(var i3=0;i3<4;i3++){
-for(var t3=0;t3<4;t3++){
-if(tArray[t3][i3]==""){
-zeno++;
-}
-else if((zeno!=0)&&(t3>zeno)&&(tArray[t3-1-zeno][i3]==tArray[t3][i3])){
-tArray[t3-1-zeno][i3]=tArray[t3-1-zeno][i3]+tArray[t3][i3];
-tArray[t3][i3]="";
-zeno++;
-}
-else{
-
-if(t3<3&&tArray[t3+1][i3]==tArray[t3][i3]){
-tArray[t3][i3]=tArray[t3][i3]+tArray[t3+1][i3];
-tArray[t3+1][i3]="";
-
-}
-
-
-if(zeno!=0){
-tArray[t3-zeno][i3]=tArray[t3][i3];
-tArray[t3][i3]="";
-}
-
-
-}
-
-
-
-
-
-}
-
-
-zeno=0;
-}
-output();
-display();
-zeno=0;
-}
-
-function left(){
-for(var i3=0;i3<4;i3++){
-for(var t3=3;t3>=0;t3--){
-if(tArray[t3][i3]==""){
-zeno++;
-}
-else if((zeno!=0)&&(t3+1+zeno<4)&&(tArray[t3+1+zeno][i3]==tArray[t3][i3])){
-tArray[t3+1+zeno][i3]=tArray[t3+1+zeno][i3]+tArray[t3][i3];
-tArray[t3][i3]="";
-zeno++;
-}
-else{
-
-if(t3>0&&tArray[t3-1][i3]==tArray[t3][i3]){
-tArray[t3][i3]=tArray[t3][i3]+tArray[t3-1][i3];
-tArray[t3-1][i3]="";
-
-}
-
-
-if(zeno!=0){
-tArray[t3+zeno][i3]=tArray[t3][i3];
-tArray[t3][i3]="";
-}
-
-
-}
-
-
-
-
-
-}
-
-
-zeno=0;
-}
-output();
-display();
-zeno=0;
-
-}
-function output(){
-produce();
-if(Math.random()>0.5)
-tArray[locx][locy]=4;
-else
-tArray[locx][locy]=2;
-}
-
-</script>
+    <a href="https://blog.csdn.net/liusaint1992/article/details/51549596">原作者：liusaint1992</a>
+    <a href="">改进作者：</a>
+	<h3 id="score">分数：0</h3>
+	<div class="g2048">
+		<div class="cell"></div>
+		<div class="cell"></div>
+		<div class="cell"></div>
+		<div class="cell"></div>
+		<div class="cell"></div>
+		<div class="cell"></div>
+		<div class="cell"></div>
+		<div class="cell"></div>
+		<div class="cell"></div>
+		<div class="cell"></div>
+		<div class="cell"></div>
+		<div class="cell"></div>
+		<div class="cell"></div>
+		<div class="cell"></div>
+		<div class="cell"></div>
+		<div class="cell"></div>
+	</div>
+    <div class="centrol">
+        <div><input type="button" onclick="fireKeyEvent(up,'keydown',38)" value="上" id="up"/></div>
+        <div><input type="button" onclick="fireKeyEvent(down,'keydown',40)" value="下" id="down"/></div>
+        <div><input type="button" onclick="fireKeyEvent(left,'keydown',37)" value="左" id="left"/></div>
+        <div><input type="button" onclick="fireKeyEvent(right,'keydown',39)" value="右" id="right"/></div>
+    </div>
 </body>
 
+	<script src="http://apps.bdimg.com/libs/jquery/1.8.1/jquery.min.js"></script>
+
+	<script src="../js/2048/2048.js"></script>
+    <script>
+    var up = document.getElementById('up')
+    var down = document.getElementById('down')
+    var left = document.getElementById('left')
+    var right = document.getElementById('right')
+    function fireKeyEvent(el, evtType, keyCode){
+	var doc = el.ownerDocument,
+		win = doc.defaultView || doc.parentWindow,
+		evtObj;
+	if(doc.createEvent){
+		if(win.KeyEvent) {
+			evtObj = doc.createEvent('KeyEvents');
+			evtObj.initKeyEvent( evtType, true, true, win, false, false, false, false, keyCode, 0 );
+		}
+		else {
+			evtObj = doc.createEvent('UIEvents');
+			Object.defineProperty(evtObj, 'keyCode', {
+		        get : function() { return this.keyCodeVal; }
+		    });
+		    Object.defineProperty(evtObj, 'which', {
+		        get : function() { return this.keyCodeVal; }
+		    });
+			evtObj.initUIEvent( evtType, true, true, win, 1 );
+			evtObj.keyCodeVal = keyCode;
+			if (evtObj.keyCode !== keyCode) {
+		        console.log("keyCode " + evtObj.keyCode + " 和 (" + evtObj.which + ") 不匹配");
+		    }
+		}
+		el.dispatchEvent(evtObj);
+	}
+	else if(doc.createEventObject){
+		evtObj = doc.createEventObject();
+		evtObj.keyCode = keyCode;
+		el.fireEvent('on' + evtType, evtObj);
+	}
+}
+    </script>
 </html>

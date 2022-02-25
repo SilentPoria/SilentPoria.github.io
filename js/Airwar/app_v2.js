@@ -65,7 +65,7 @@ function download() {
 
     function nImg(src) {
         var img = new Image();
-        img.src = 'img/Airwar/' + src;
+        img.src = '../img/Airwar/' + src;
         img.onload = imgLoad;
         return img;
     }
