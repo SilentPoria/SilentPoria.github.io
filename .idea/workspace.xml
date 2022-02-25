@@ -25,22 +25,23 @@
   <component name="PropertiesComponent">
     <property name="DefaultHtmlFileTemplate" value="HTML File" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/assets/js" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/Game" />
     <property name="settings.editor.selected.configurable" value="fileTemplates" />
   </component>
   <component name="RecentsManager">
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="D:\GITHUB\assets\js" />
-      <recent name="D:\GITHUB" />
-      <recent name="D:\GITHUB\img\Airwar" />
-      <recent name="D:\GITHUB\images" />
-    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="D:\GITHUB\img" />
       <recent name="D:\GITHUB\images\index" />
       <recent name="D:\GITHUB\临时废弃" />
       <recent name="D:\GITHUB\css\reHome" />
       <recent name="D:\GITHUB\js\Airwar" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\GITHUB\Game" />
+      <recent name="D:\GITHUB\assets\js" />
+      <recent name="D:\GITHUB" />
+      <recent name="D:\GITHUB\img\Airwar" />
+      <recent name="D:\GITHUB\images" />
     </key>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
