@@ -26,23 +26,23 @@
   <component name="PropertiesComponent">
     <property name="DefaultHtmlFileTemplate" value="HTML File" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/game" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/game/xiangqi" />
     <property name="settings.editor.selected.configurable" value="fileTemplates" />
   </component>
   <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\GITHUB\game\xiangqi" />
+      <recent name="D:\GITHUB\game" />
+      <recent name="D:\GITHUB\game\Towerblocks" />
+      <recent name="D:\GITHUB\game\Airwar" />
+      <recent name="D:\GITHUB\game\2048\css" />
+    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="D:\GITHUB\game" />
       <recent name="D:\GITHUB\giveUp" />
       <recent name="D:\GITHUB\game\speedball" />
       <recent name="D:\GITHUB\game\BeatBricks" />
       <recent name="D:\GITHUB\game\2048\js" />
-    </key>
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="D:\GITHUB\game" />
-      <recent name="D:\GITHUB\game\Towerblocks" />
-      <recent name="D:\GITHUB\game\Airwar" />
-      <recent name="D:\GITHUB\game\2048\css" />
-      <recent name="D:\GITHUB\game\2048" />
     </key>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
