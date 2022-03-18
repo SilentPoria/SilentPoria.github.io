@@ -1,6 +1,6 @@
 <html>
   <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=gbk">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
     <title>xiangqi</title>
     <script type="text/javascript" src="board.js"></script>
 	<script type="text/javascript" src="position.js"></script>
@@ -41,7 +41,7 @@ label {
     --></style>
   </head>
   <body>
-    <div style="text-align:center;font-size:28px;font-family:ºÚÌå"></div>
+    <div style="text-align:center;font-size:28px;font-family:é»‘ä½“"></div>
     <div style="height:16px"></div>
     <div style="text-align:center;white-space:nowrap">
       <span class="td" style="margin-right:10px">
@@ -66,7 +66,7 @@ label {
     <script type="text/javascript"><!--
 "use strict";
 
-// ¿É¹©Ñ¡ÔñµÄ¿ª¾Ö¾ÖÃæ
+// å¯ä¾›é€‰æ‹©çš„å¼€å±€å±€é¢
 var STARTUP_FEN = [
   "rnbakabnr/9/1c5c1/p1p1p1p1p/9/9/P1P1P1P1P/1C5C1/9/RNBAKABNR w",
   "rnbakabnr/9/1c5c1/p1p1p1p1p/9/9/P1P1P1P1P/1C5C1/9/RNBAKAB1R w",
@@ -74,17 +74,17 @@ var STARTUP_FEN = [
   "rnbakabnr/9/1c5c1/p1p1p1p1p/9/9/9/1C5C1/9/RN2K2NR w",
 ];
 
-var board = new Board(container, "images/");	// ÊµÀý»¯ÆåÅÌ¶ÔÏó
-board.setSearch(16);							// ÉèÖÃËÑË÷Ëã·¨
-board.computer = 1;								// µçÄÔÄ¬ÈÏÖ´ºÚ
+var board = new Board(container, "images/");	// å®žä¾‹åŒ–æ£‹ç›˜å¯¹è±¡
+board.setSearch(16);							// è®¾ç½®æœç´¢ç®—æ³•
+board.computer = 1;								// ç”µè„‘é»˜è®¤æ‰§é»‘
 
-// ÖØÐÂ¿ªÊ¼
+// é‡æ–°å¼€å§‹
 function restart_click() {
-  board.computer = 1 - selMoveMode.selectedIndex;			// ¸ù¾ÝÓÃ»§Ñ¡Ôñ£¬¾ö¶¨µçÄÔÖ´ºÚ»¹ÊÇÖ´ºì
-  board.restart(STARTUP_FEN[selHandicap.selectedIndex]);	// Ê¹ÓÃÓÃ»§Ñ¡ÔñµÄ¿ª¾Ö¾ÖÃæ£¬³õÊ¼»¯Æå¾Ö
+  board.computer = 1 - selMoveMode.selectedIndex;			// æ ¹æ®ç”¨æˆ·é€‰æ‹©ï¼Œå†³å®šç”µè„‘æ‰§é»‘è¿˜æ˜¯æ‰§çº¢
+  board.restart(STARTUP_FEN[selHandicap.selectedIndex]);	// ä½¿ç”¨ç”¨æˆ·é€‰æ‹©çš„å¼€å±€å±€é¢ï¼Œåˆå§‹åŒ–æ£‹å±€
 }
 
-// »ÚÆå
+// æ‚”æ£‹
 function retract_click() {
   board.retract();
 }
