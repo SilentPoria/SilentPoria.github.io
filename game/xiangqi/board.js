@@ -157,13 +157,13 @@ Board.prototype.postAddMove = function(mv, computerMove) {
     vlRep = this.pos.repValue(vlRep);
     if (vlRep > -WIN_VALUE && vlRep < WIN_VALUE) {
       this.result = RESULT_DRAW;
-      alertDelay("双方不变作和，辛苦了！");
+      alertDelay("Tie！");
     } else if (computerMove == (vlRep < 0)) {
       this.result = RESULT_LOSS;
-      alertDelay("长将作负，请不要气馁！");
+      alertDelay("tie，but you lost！");
     } else {
       this.result = RESULT_WIN;
-      alertDelay("长将作负，祝贺你取得胜利！");
+      alertDelay("tie，but you won！");
     }
     this.busy = false;
     return;
@@ -174,7 +174,7 @@ Board.prototype.postAddMove = function(mv, computerMove) {
 }
 
 Board.prototype.postMate = function(computerMove) {
-  alertDelay(computerMove ? "请再接再厉！" : "祝贺你取得胜利！");
+  alertDelay(computerMove ? "you lost！" : "you won！");
   this.busy = false;
 }
 
