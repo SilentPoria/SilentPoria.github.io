@@ -57,10 +57,14 @@ label {
 	  <div class="label">先手棋子难度系数</div>
       <div><select id="selHandicap" style="padding:0px">
         <option selected value="0">Lv.EZ 不让子</option>
-        <option value="1">Lv.HD 让左马</option>
-        <option value="2">Lv.IN 让双马</option>
-        <option value="3">Lv.AT 让九子</option>
-        <option value="4">Lv.SP 愚人铺(随机更新)</option>
+        <option value="1">Lv.EZ 对让左马</option>
+        <option value="2">Lv.EZ 对让双马</option>
+        <option value="3">Lv.EZ 对让九子</option>
+        <option value="4">Lv.HD 让左马</option>
+        <option value="5">Lv.IN 让双马</option>
+        <option value="6">Lv.AT 让九子</option>
+        <option value="7">Lv.SP 愚人铺(随机更新)</option>
+
       </select></div>
       <div style="padding-top:2px"><a href="https://si1entsuzuka.github.io/Chats/xiangqi/"><input id='chats' type="button" class="button" value="排行榜"></a></div>
       <div style="padding-top:2px"><input id='start' type="button" class="button" value="开始" onclick="restart_click()"></div>
@@ -69,16 +73,20 @@ label {
       <div style="padding-top:2px"><input id='undo' type="button" class="button" value="悔棋" onclick="retract_click()" disabled></div>
       <div style="padding-top:2px"><input id='diy' type="button" class="button" value="自定义(开发中)" onclick="" disabled></div>
     </div>
-  <script type="text/javascript"><!--
+  <script type="text/javascript">
 "use strict";
 
 // 可供选择的开局局面
 var STARTUP_FEN = [
-"rnbakabnr/9/1c5c1/p1p1p1p1p/9/9/P1P1P1P1P/1C5C1/9/RNBAKABNR w",
-"rnbakabnr/9/1c5c1/p1p1p1p1p/9/9/P1P1P1P1P/1C5C1/9/RNBAKAB1R w",
-"rnbakabnr/9/1c5c1/p1p1p1p1p/9/9/P1P1P1P1P/1C5C1/9/R1BAKAB1R w",
-"rnbakabnr/9/1c5c1/p1p1p1p1p/9/9/9/1C5C1/9/RN2K2NR w",
-"4k4/9/ppppppppp/ppppppppp/9/9/PPPPPPPPP/PPPPPPPPP/9/4K4 w"
+"rnbakabnr/9/1c5c1/p1p1p1p1p/9/9/P1P1P1P1P/1C5C1/9/RNBAKABNR w",//0
+"rnbakab1r/9/1c5c1/p1p1p1p1p/9/9/P1P1P1P1P/1C5C1/9/RNBAKABNR w",//1
+"r1bakab1r/9/1c5c1/p1p1p1p1p/9/9/P1P1P1P1P/1C5C1/9/RNBAKABNR w",//2
+"rn2k2nr/9/1c5c1/9/9/9/P1P1P1P1P/1C5C1/9/RNBAKABNR w",//3
+"rnbakabnr/9/1c5c1/p1p1p1p1p/9/9/P1P1P1P1P/1C5C1/9/RNBAKAB1R w",//4
+"rnbakabnr/9/1c5c1/p1p1p1p1p/9/9/P1P1P1P1P/1C5C1/9/R1BAKAB1R w",//5
+"rnbakabnr/9/1c5c1/p1p1p1p1p/9/9/9/1C5C1/9/RN2K2NR w",//6
+"4k4/9/ppppppppp/ppppppppp/9/9/PPPPPPPPP/PPPPPPPPP/9/4K4 w",//7
+
 ];
 
 var board = new Board(container, "images/");	// 实例化棋盘对象
