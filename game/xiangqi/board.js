@@ -1,10 +1,10 @@
 "use strict";
 
-// ¶Ô¾Ö½á¹û
+// ï¿½Ô¾Ö½ï¿½ï¿½
 var RESULT_UNKNOWN = 0;	// Î´Öª
 var RESULT_WIN = 1;		// Ó®
-var RESULT_DRAW = 2;	// ºÍÆå
-var RESULT_LOSS = 3;	// Êä
+var RESULT_DRAW = 2;	// ï¿½ï¿½ï¿½ï¿½
+var RESULT_LOSS = 3;	// ï¿½ï¿½
 
 var BOARD_WIDTH = 521;
 var BOARD_HEIGHT = 577;
@@ -20,12 +20,12 @@ var PIECE_NAME = [
   "bk", "ba", "bb", "bn", "br", "bc", "bp", null,
 ];
 
-// Æå×Ó¾àÀëÆåÅÌ×ó±ß¿òµÄ¾àÀë
+// ï¿½ï¿½ï¿½Ó¾ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ß¿ï¿½Ä¾ï¿½ï¿½ï¿½
 function SQ_X(sq) {
   return SQUARE_LEFT + (FILE_X(sq) - 3) * SQUARE_SIZE;
 }
 
-// Æå×Ó¾àÀëÆåÅÌÉÏ±ß¿òµÄ¾àÀë
+// ï¿½ï¿½ï¿½Ó¾ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ï±ß¿ï¿½Ä¾ï¿½ï¿½ï¿½
 function SQ_Y(sq) {
   return SQUARE_TOP + (RANK_Y(sq) - 3) * SQUARE_SIZE;
 }
@@ -37,16 +37,17 @@ function alertDelay(message) {
 }
 
 function Board(container, images) {
-  this.images = images;			// Í¼Æ¬Â·¾¶
-  this.imgSquares = [];			// imgÊý×é£¬¶ÔÓ¦ÆåÅÌÉÏµÄ90¸öÎ»ÖÃÇøÓò
+  this.images = images;			// Í¼Æ¬Â·ï¿½ï¿½
+  this.imgSquares = [];			// imgï¿½ï¿½ï¿½é£¬ï¿½ï¿½Ó¦ï¿½ï¿½ï¿½ï¿½ï¿½Ïµï¿½90ï¿½ï¿½Î»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
   this.pos = new Position();
-  this.pos.fromFen("rnbakabnr/9/1c5c1/p1p1p1p1p/9/9/P1P1P1P1P/1C5C1/9/RNBAKABNR w - - 0 1");	// ¸ù¾ÝFEN´®³õÊ¼»¯Æå¾Ö
-  this.sqSelected = 0;			// µ±Ç°Ñ¡ÖÐÆå×ÓµÄÎ»ÖÃ£¨Èç¹ûÎª0£¬±íÊ¾µ±Ç°Ã»ÓÐÆå×Ó±»Ñ¡ÖÐ£©
-  this.mvLast = 0;				// ÉÏÒ»²½×ß·¨
-  this.search = null;			// Search¶ÔÏóµÄÊµÀý
-  this.computer = -1;			// this.computer = 0£¬±íÊ¾µçÄÔÖ´ºÚ£»this.computer = 1£¬±íÊ¾µçÄÔÖ´ºì
-  this.result = RESULT_UNKNOWN;	// ¶Ô¾Ö½á¹û
-  this.busy = false;			// false-¿ÕÏÐ×´Ì¬£»true-·±Ã¦×´Ì¬£¬²»ÔÙÏìÓ¦ÓÃ»§µã»÷¡£
+  //this.pos.fromFen("rnbakabnr/9/1c5c1/p1p1p1p1p/9/9/P1P1P1P1P/1C5C1/9/RNBAKABNR w - - 0 1");	// ï¿½ï¿½ï¿½ï¿½FENï¿½ï¿½ï¿½ï¿½Ê¼ï¿½ï¿½ï¿½ï¿½ï¿½
+  this.pos.fromFen("9/9/9/9/9/9/9/9/9/9 w - - 0 1");
+  this.sqSelected = 0;			// ï¿½ï¿½Ç°Ñ¡ï¿½ï¿½ï¿½ï¿½ï¿½Óµï¿½Î»ï¿½Ã£ï¿½ï¿½ï¿½ï¿½Îª0ï¿½ï¿½ï¿½ï¿½Ê¾ï¿½ï¿½Ç°Ã»ï¿½ï¿½ï¿½ï¿½ï¿½Ó±ï¿½Ñ¡ï¿½Ð£ï¿½
+  this.mvLast = 0;				// ï¿½ï¿½Ò»ï¿½ï¿½ï¿½ß·ï¿½
+  this.search = null;			// Searchï¿½ï¿½ï¿½ï¿½ï¿½Êµï¿½ï¿½
+  this.computer = -1;			// this.computer = 0ï¿½ï¿½ï¿½ï¿½Ê¾ï¿½ï¿½ï¿½ï¿½Ö´ï¿½Ú£ï¿½this.computer = 1ï¿½ï¿½ï¿½ï¿½Ê¾ï¿½ï¿½ï¿½ï¿½Ö´ï¿½ï¿½
+  this.result = RESULT_UNKNOWN;	// ï¿½Ô¾Ö½ï¿½ï¿½
+  this.busy = false;			// false-ï¿½ï¿½ï¿½ï¿½×´Ì¬ï¿½ï¿½true-ï¿½ï¿½Ã¦×´Ì¬ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ó¦ï¿½Ã»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 
   var style = container.style;
   style.position = "relative";
@@ -55,15 +56,15 @@ function Board(container, images) {
   style.background = "url(" + images + "board.jpg)";
   var this_ = this;
   for (var sq = 0; sq < 256; sq ++) {
-    // ±éÀúÐéÄâÆåÅÌµÄ256¸öµã
+    // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ìµï¿½256ï¿½ï¿½ï¿½ï¿½
 	
-	// 1.ÅÐ¶Ï¸ÃµãÊÇ·ñÎ»ÓÚÕæÊµÆåÅÌ
+	// 1.ï¿½Ð¶Ï¸Ãµï¿½ï¿½Ç·ï¿½Î»ï¿½ï¿½ï¿½ï¿½Êµï¿½ï¿½ï¿½ï¿½
 	if (!IN_BOARD(sq)) {
       this.imgSquares.push(null);
       continue;
     }
 	
-	// 2.ÆåÅÌÉÏµÄ90¸öÇøÓò£¬Ã¿¸öÇøÓò¶¼»á¶¨ÒåÒ»¸ö¶ÔÓ¦µÄimg±êÇ©
+	// 2.ï¿½ï¿½ï¿½ï¿½ï¿½Ïµï¿½90ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ã¿ï¿½ï¿½ï¿½ï¿½ï¿½ò¶¼»á¶¨ï¿½ï¿½Ò»ï¿½ï¿½ï¿½ï¿½Ó¦ï¿½ï¿½imgï¿½ï¿½Ç©
     var img = document.createElement("img");
     var style = img.style;
     style.position = "absolute";
@@ -73,21 +74,21 @@ function Board(container, images) {
     style.height = SQUARE_SIZE;
     style.zIndex = 0;
 	
-	// 3.Ã¿¸öÆåÅÌÇøÓò¶¼»á°ó¶¨µã»÷ÊÂ¼þ£¬²ÎÊýsq_±íÊ¾ÁË¾ßÌåµã»÷µÄÇøÓò¡££¨ÕâÀïÓÃµ½ÁË¡°±Õ°ü¡±µÄÖªÊ¶°É£©
+	// 3.Ã¿ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ò¶¼»ï¿½ó¶¨µï¿½ï¿½ï¿½Â¼ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½sq_ï¿½ï¿½Ê¾ï¿½Ë¾ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ò¡££ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ãµï¿½ï¿½Ë¡ï¿½ï¿½Õ°ï¿½ï¿½ï¿½ï¿½ï¿½ÖªÊ¶ï¿½É£ï¿½
     img.onmousedown = function(sq_) {
       return function() {
         this_.clickSquare(sq_);
       }
     } (sq);
 
-	// 4.½«¶¨ÒåºÃµÄimg±êÇ©×·¼Óµ½htmlÖÐ
+	// 4.ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ãµï¿½imgï¿½ï¿½Ç©×·ï¿½Óµï¿½htmlï¿½ï¿½
     container.appendChild(img);
 	
-	// 5.½«img±êÇ©´æ´¢µ½imgSquaresÊý×éÖÐ£¬·½±ãºóÐø¶Ô¸ÃÇøÓò½øÐÐ²Ù×÷£¨±ÈÈç£¬ÏÔÊ¾²»Í¬µÄÆå×ÓÍ¼Æ¬£©
+	// 5.ï¿½ï¿½imgï¿½ï¿½Ç©ï¿½æ´¢ï¿½ï¿½imgSquaresï¿½ï¿½ï¿½ï¿½ï¿½Ð£ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ô¸ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ð²ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ç£¬ï¿½ï¿½Ê¾ï¿½ï¿½Í¬ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Í¼Æ¬ï¿½ï¿½
 	this.imgSquares.push(img);
   }
   
-  // µçÄÔË¼¿¼ÖÐµÄÍ¼Æ¬£¨Ò²¾ÍÊÇthinking.gif£©
+  // ï¿½ï¿½ï¿½ï¿½Ë¼ï¿½ï¿½ï¿½Ðµï¿½Í¼Æ¬ï¿½ï¿½Ò²ï¿½ï¿½ï¿½ï¿½thinking.gifï¿½ï¿½
   this.thinking = document.createElement("img");
   this.thinking.src = images + "thinking.gif";
   style = this.thinking.style;
@@ -97,33 +98,33 @@ function Board(container, images) {
   style.top = THINKING_TOP + "px";
   container.appendChild(this.thinking);
 
-  // ÏÔÊ¾Æå×ÓÍ¼Æ¬
+  // ï¿½ï¿½Ê¾ï¿½ï¿½ï¿½ï¿½Í¼Æ¬
   this.flushBoard();
 }
 
-// ÉèÖÃËÑË÷Ëã·¨
+// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ã·¨
 Board.prototype.setSearch = function(hashLevel) {
   this.search = hashLevel == 0 ? null : new Search(this.pos, hashLevel);
 }
 
-// ·­×ªÆåÅÌÎ»ÖÃ£¨µçÄÔÖ´ºì£¬Ò²¾ÍÊÇµçÄÔÏÈ×ßµÄÊ±ºò£¬»á°ÑºìÆåÏÔÊ¾ÔÚÆåÅÌÉÏÃæ£¬ºÚÆåÏÔÊ¾ÔÚÏÂÃæ£©
+// ï¿½ï¿½×ªï¿½ï¿½ï¿½ï¿½Î»ï¿½Ã£ï¿½ï¿½ï¿½ï¿½ï¿½Ö´ï¿½ì£¬Ò²ï¿½ï¿½ï¿½Çµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ßµï¿½Ê±ï¿½ò£¬»ï¿½Ñºï¿½ï¿½ï¿½ï¿½ï¿½Ê¾ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½æ£¬ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ê¾ï¿½ï¿½ï¿½ï¿½ï¿½æ£©
 Board.prototype.flipped = function(sq) {
   return this.computer == 0 ? SQUARE_FLIP(sq) : sq;
 }
 
-// Èç¹û¸ÃµçÄÔ×ßÆå£¬·µ»Øtrue£»·ñÔò£¬·µ»Øfalse
+// ï¿½ï¿½ï¿½ï¿½Ãµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½å£¬ï¿½ï¿½ï¿½ï¿½trueï¿½ï¿½ï¿½ï¿½ï¿½ò£¬·ï¿½ï¿½ï¿½false
 Board.prototype.computerMove = function() {
   return this.pos.sdPlayer == this.computer;
 }
 
-// ÅÐ¶ÏÕâ²½ÆåÊÇ·ñºÏ·¨£¬Èç¹ûºÏ·¨£¬¾ÍÖ´ÐÐÕâ²½Æå
+// ï¿½Ð¶ï¿½ï¿½â²½ï¿½ï¿½ï¿½Ç·ï¿½Ï·ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ï·ï¿½ï¿½ï¿½ï¿½ï¿½Ö´ï¿½ï¿½ï¿½â²½ï¿½ï¿½
 Board.prototype.addMove = function(mv, computerMove) {
-  // ÅÐ¶ÏÕâ²½ÆåÊÇ·ñºÏ·¨
+  // ï¿½Ð¶ï¿½ï¿½â²½ï¿½ï¿½ï¿½Ç·ï¿½Ï·ï¿½
   if (!this.pos.legalMove(mv)) {
     return;
   }
   
-  // Ö´ÐÐÕâ²½Æå
+  // Ö´ï¿½ï¿½ï¿½â²½ï¿½ï¿½
   if (!this.pos.makeMove(mv)) {
     return;
   }
@@ -132,77 +133,85 @@ Board.prototype.addMove = function(mv, computerMove) {
 }
 
 Board.prototype.postAddMove = function(mv, computerMove) {
-  // Çå³ýÉÏÒ»²½µÄÑ¡ÖÐ·½¿ò
+  // ï¿½ï¿½ï¿½ï¿½ï¿½Ò»ï¿½ï¿½ï¿½ï¿½Ñ¡ï¿½Ð·ï¿½ï¿½ï¿½
   if (this.mvLast > 0) {
     this.drawSquare(SRC(this.mvLast), false);
     this.drawSquare(DST(this.mvLast), false);
   }
 
-  // ÏÔÊ¾ÕâÒ»²½×ßÆåµÄÑ¡ÖÐ·½¿ò
+  // ï¿½ï¿½Ê¾ï¿½ï¿½Ò»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ñ¡ï¿½Ð·ï¿½ï¿½ï¿½
   this.drawSquare(SRC(mv), true);
   this.drawSquare(DST(mv), true);
   
   this.sqSelected = 0;
   this.mvLast = mv;
   
-  // ÅÐ¶ÏÓÎÏ·ÊÇ·ñ½áÊø
-  if (this.pos.isMate()) {	// ÎÞÆå¿É×ß£¬Êµ¼ÊÉÏ¾ÍÊÇ±»½«ËÀÁË
+  // ï¿½Ð¶ï¿½ï¿½ï¿½Ï·ï¿½Ç·ï¿½ï¿½ï¿½ï¿½
+  if (this.pos.isMate()) {	// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ß£ï¿½Êµï¿½ï¿½ï¿½Ï¾ï¿½ï¿½Ç±ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
     this.result = computerMove ? RESULT_LOSS : RESULT_WIN;
 	this.postMate(computerMove);
   }
   
-  // ÅÐ¶ÏÊÇ·ñ³öÏÖ³¤½«
+  // ï¿½Ð¶ï¿½ï¿½Ç·ï¿½ï¿½ï¿½Ö³ï¿½ï¿½ï¿½
   var vlRep = this.pos.repStatus(3);
   if (vlRep > 0) {
     vlRep = this.pos.repValue(vlRep);
     if (vlRep > -WIN_VALUE && vlRep < WIN_VALUE) {
       this.result = RESULT_DRAW;
-      alertDelay("Tie£¡");
+      alertDelay("å’Œå±€Tie!");
     } else if (computerMove == (vlRep < 0)) {
       this.result = RESULT_LOSS;
-      alertDelay("tie£¬but you lost£¡");
+      alertDelay("å’Œå±€tie!but you lost!");
     } else {
       this.result = RESULT_WIN;
-      alertDelay("tie£¬but you won£¡");
+      alertDelay("å’Œå±€tie!but you won!");
     }
     this.busy = false;
     return;
   }
   
-  // µçÄÔ»ØÒ»²½Æå
+  // ï¿½ï¿½ï¿½Ô»ï¿½Ò»ï¿½ï¿½ï¿½ï¿½
   this.response();
 }
 
 Board.prototype.postMate = function(computerMove) {
-  alertDelay(computerMove ? "you lost£¡" : "you won£¡");
+  alertDelay(computerMove ? "you lostï¼" : "you wonï¼");
   this.busy = false;
 }
 
-// µçÄÔ»ØÒ»²½Æå
+// ï¿½ï¿½ï¿½Ô»ï¿½Ò»ï¿½ï¿½ï¿½ï¿½
 Board.prototype.response = function() {
-  if (this.search == null || !this.computerMove()) {	// ËÑË÷¶ÔÏóÎªnull»òÕß²»¸ÃµçÄÔ×ßÆå
+  if (this.search == null || !this.computerMove()) {	// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Îªnullï¿½ï¿½ï¿½ß²ï¿½ï¿½Ãµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
     this.busy = false;
     return;
   }
-  this.thinking.style.visibility = "visible";			// ÏÔÊ¾µçÄÔË¼¿¼ÖÐµÄÍ¼Æ¬
+  this.thinking.style.visibility = "visible";			// ï¿½ï¿½Ê¾ï¿½ï¿½ï¿½ï¿½Ë¼ï¿½ï¿½ï¿½Ðµï¿½Í¼Æ¬
   var this_ = this;
   var mvResult = 0;
   this.busy = true;
-  setTimeout(function() {
-    this_.addMove(board.search.searchMain(LIMIT_DEPTH, 1000), true);
-    this_.thinking.style.visibility = "hidden";
-  }, 250);
+  
+  setTimeout(
+    function() {
+      var x = document.getElementById("AItimer");
+      var start = new Date().getTime();
+      this_.addMove(board.search.searchMain(LIMIT_DEPTH, 1000), true);
+      this_.thinking.style.visibility = "hidden";
+      var end = new Date().getTime();
+      x.innerText=end-start;
+      console.log('cost is', `${end - start}ms`);
+      
+  }, 250); 
 }
 
-// µã»÷ÆåÅÌµÄÏìÓ¦º¯Êý¡£µã»÷ÆåÅÌ£¨Æå×Ó»òÕß¿ÕÎ»ÖÃ£©£¬¾Í»áµ÷ÓÃ¸Ãº¯Êý¡£sq_ÊÇµã»÷µÄÎ»ÖÃ
+// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ìµï¿½ï¿½ï¿½Ó¦ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ì£ï¿½ï¿½ï¿½ï¿½Ó»ï¿½ï¿½ß¿ï¿½Î»ï¿½Ã£ï¿½ï¿½ï¿½ï¿½Í»ï¿½ï¿½ï¿½Ã¸Ãºï¿½ï¿½ï¿½ï¿½ï¿½sq_ï¿½Çµï¿½ï¿½ï¿½ï¿½Î»ï¿½ï¿½
 Board.prototype.clickSquare = function(sq_) {
   if (this.busy || this.result != RESULT_UNKNOWN) {
     return;
   }
-  var sq = this.flipped(sq_);		// µã»÷µÄÎ»ÖÃ£¨Èç¹ûÊÇµçÄÔÖ´ºì£¬Î»ÖÃÊÇ±»·­×ªµÄ¡£ÔÙÖ´ÐÐÒ»±éflipped£¬Î»ÖÃ¾Í±»·­×ª»ØÀ´ÁË¡££©
-  var pc = this.pos.squares[sq];	// µã»÷µÄÆå×Ó
+  var sq = this.flipped(sq_);		// ï¿½ï¿½ï¿½ï¿½ï¿½Î»ï¿½Ã£ï¿½ï¿½ï¿½ï¿½ï¿½Çµï¿½ï¿½ï¿½Ö´ï¿½ì£¬Î»ï¿½ï¿½ï¿½Ç±ï¿½ï¿½ï¿½×ªï¿½Ä¡ï¿½ï¿½ï¿½Ö´ï¿½ï¿½Ò»ï¿½ï¿½flippedï¿½ï¿½Î»ï¿½Ã¾Í±ï¿½ï¿½ï¿½×ªï¿½ï¿½ï¿½ï¿½ï¿½Ë¡ï¿½ï¿½ï¿½
+  var pc = this.pos.squares[sq];	// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
   if ((pc & SIDE_TAG(this.pos.sdPlayer)) != 0) {
-    // µã»÷ÁË¼º·½Æå×Ó£¬Ö±½ÓÑ¡ÖÐ¸Ã×Ó
+    // ï¿½ï¿½ï¿½ï¿½Ë¼ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ó£ï¿½Ö±ï¿½ï¿½Ñ¡ï¿½Ð¸ï¿½ï¿½ï¿½
 	
 	if (this.mvLast != 0) {
       this.drawSquare(SRC(this.mvLast), false);
@@ -214,19 +223,19 @@ Board.prototype.clickSquare = function(sq_) {
     this.drawSquare(sq, true);
     this.sqSelected = sq;
   } else if (this.sqSelected > 0) {
-    // µã»÷µÄ²»ÊÇ¼º·½Æå×Ó£¨¶Ô·½Æå×Ó»òÕßÎÞ×ÓµÄÎ»ÖÃ£©£¬µ«ÓÐ×ÓÑ¡ÖÐÁË(Ò»¶¨ÊÇ×Ô¼ºµÄ×Ó)£¬ÄÇÃ´Ö´ÐÐÕâ¸ö×ß·¨
+    // ï¿½ï¿½ï¿½ï¿½Ä²ï¿½ï¿½Ç¼ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ó£ï¿½ï¿½Ô·ï¿½ï¿½ï¿½ï¿½Ó»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Óµï¿½Î»ï¿½Ã£ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ñ¡ï¿½ï¿½ï¿½ï¿½(Ò»ï¿½ï¿½ï¿½ï¿½ï¿½Ô¼ï¿½ï¿½ï¿½ï¿½ï¿½)ï¿½ï¿½ï¿½ï¿½Ã´Ö´ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ß·ï¿½
 	this.addMove(MOVE(this.sqSelected, sq), false);
   }
 }
 
-// ÏÔÊ¾sqÎ»ÖÃµÄÆå×ÓÍ¼Æ¬¡£Èç¹û¸ÃÎ»ÖÃÃ»Æå×Ó£¬ÔòÏÔÊ¾Ò»ÕÅÍ¸Ã÷µÄÍ¼Æ¬¡£Èç¹ûselectedÎªtrue£¬ÔòÒªÏÔÊ¾Æå×ÓÑ¡ÖÐÊ±µÄ±ß¿ò¡£
+// ï¿½ï¿½Ê¾sqÎ»ï¿½Ãµï¿½ï¿½ï¿½ï¿½ï¿½Í¼Æ¬ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Î»ï¿½ï¿½Ã»ï¿½ï¿½ï¿½Ó£ï¿½ï¿½ï¿½ï¿½ï¿½Ê¾Ò»ï¿½ï¿½Í¸ï¿½ï¿½ï¿½ï¿½Í¼Æ¬ï¿½ï¿½ï¿½ï¿½ï¿½selectedÎªtrueï¿½ï¿½ï¿½ï¿½Òªï¿½ï¿½Ê¾ï¿½ï¿½ï¿½ï¿½Ñ¡ï¿½ï¿½Ê±ï¿½Ä±ß¿ï¿½
 Board.prototype.drawSquare = function(sq, selected) {
   var img = this.imgSquares[this.flipped(sq)];
   img.src = this.images + PIECE_NAME[this.pos.squares[sq]] + ".gif";
   img.style.backgroundImage = selected ? "url(" + this.images + "oos.gif)" : "";
 }
 
-// ÖØÐÂÏÔÊ¾ÆåÅÌÉÏµÄÆå×Ó
+// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ê¾ï¿½ï¿½ï¿½ï¿½ï¿½Ïµï¿½ï¿½ï¿½ï¿½ï¿½
 Board.prototype.flushBoard = function() {
   for (var sq = 0; sq < 256; sq ++) {
     if (IN_BOARD(sq)) {
@@ -235,33 +244,33 @@ Board.prototype.flushBoard = function() {
   }
 }
 
-// Æå¾ÖÖØÐÂ¿ªÊ¼
+// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Â¿ï¿½Ê¼
 Board.prototype.restart = function(fen) {
-  if (this.busy) {				// µçÄÔÕýÔÚË¼¿¼ÖÐ£¬²»ÏìÓ¦ÈÎºÎµã»÷ÊÂ¼þ
+  if (this.busy) {				// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ë¼ï¿½ï¿½ï¿½Ð£ï¿½ï¿½ï¿½ï¿½ï¿½Ó¦ï¿½ÎºÎµï¿½ï¿½ï¿½Â¼ï¿½
     return;
   }
 
-  this.result = RESULT_UNKNOWN;	// ÖØÖÃ¶Ô¾Ö½á¹ûÎª¡°Î´Öª¡±
-  this.pos.fromFen(fen);		// ¸ù¾ÝÓÃ»§Ñ¡ÔñµÄ¾ÖÃæÖØÐÂ¿ªÊ¼
-  this.flushBoard();			// ÖØÐÂÏÔÊ¾ÆåÅÌ
-  this.response();				// Èç¹ûµçÄÔÖ´ºìÏÈ×ß£¬»á×Ô¶¯×ß²½Æå¡£
+  this.result = RESULT_UNKNOWN;	// ï¿½ï¿½ï¿½Ã¶Ô¾Ö½ï¿½ï¿½Îªï¿½ï¿½Î´Öªï¿½ï¿½
+  this.pos.fromFen(fen);		// ï¿½ï¿½ï¿½ï¿½ï¿½Ã»ï¿½Ñ¡ï¿½ï¿½Ä¾ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Â¿ï¿½Ê¼
+  this.flushBoard();			// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ê¾ï¿½ï¿½ï¿½ï¿½
+  this.response();				// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ö´ï¿½ï¿½ï¿½ï¿½ï¿½ß£ï¿½ï¿½ï¿½ï¿½Ô¶ï¿½ï¿½ß²ï¿½ï¿½å¡£
 }
 
-// »ÚÆå
+// ï¿½ï¿½ï¿½ï¿½
 Board.prototype.retract = function() {
   if (this.busy) {
     return;
   }
 
-  // ÖØÖÃ¶Ô¾Ö½á¹ûÎª¡°Î´Öª¡±
+  // ï¿½ï¿½ï¿½Ã¶Ô¾Ö½ï¿½ï¿½Îªï¿½ï¿½Î´Öªï¿½ï¿½
   this.result = RESULT_UNKNOWN;
   
-  // Èç¹û×ß·¨Êý×é²»Îª¿Õ£¬ÄÇÃ´¾Í³·ÏúÒ»²½Æå
+  // ï¿½ï¿½ï¿½ï¿½ß·ï¿½ï¿½ï¿½ï¿½é²»Îªï¿½Õ£ï¿½ï¿½ï¿½Ã´ï¿½Í³ï¿½ï¿½ï¿½Ò»ï¿½ï¿½ï¿½ï¿½
   if (this.pos.mvList.length > 1) {
     this.pos.undoMakeMove();
   }
   
-  // Èç¹û×ß·¨Êý×é²»Îª¿Õ£¬²¢ÇÒ¸ÃµçÄÔ×ßÆå£¬ÄÇÃ´ÐèÒªÔÙ³·ÏúÒ»²½Æå
+  // ï¿½ï¿½ï¿½ï¿½ß·ï¿½ï¿½ï¿½ï¿½é²»Îªï¿½Õ£ï¿½ï¿½ï¿½ï¿½Ò¸Ãµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½å£¬ï¿½ï¿½Ã´ï¿½ï¿½Òªï¿½Ù³ï¿½ï¿½ï¿½Ò»ï¿½ï¿½ï¿½ï¿½
   if (this.pos.mvList.length > 1 && this.computerMove()) {
     this.pos.undoMakeMove();
   }
