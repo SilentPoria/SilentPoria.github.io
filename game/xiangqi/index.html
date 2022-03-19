@@ -46,7 +46,7 @@ label {
     <div style="text-align:center;white-space:nowrap">
       <span class="td" style="margin-right:10px">
         <div id="container"></div>
-        <p>已用：<span id="sec">0</span>.<span id="se">0</span>秒</p>
+        <p>已用：<span id="sec">0</span>. <span id="se">0</span>秒</p>
       </span><span class="td" style="vertical-align:top;width:120px;"><div style="text-align:left">
 	  <div class="label">先手 Gofirst</div>
       <div><select id="selMoveMode" size="3">
@@ -64,8 +64,10 @@ label {
       </select></div>
       <div style="padding-top:2px"><a href="https://si1entsuzuka.github.io/Chats/xiangqi/"><input id='chats' type="button" class="button" value="排行榜"></a></div>
       <div style="padding-top:2px"><input id='start' type="button" class="button" value="开始" onclick="restart_click()"></div>
-	  <div style="padding-top:2px"><input id='restart' type="button" class="button" value="重新开始" onclick="start_click()" disabled></div>
+      <div style="padding-top:2px"><input id='train' type="button" class="button" value="训练" onclick="train_click()"></div>
+	    <div style="padding-top:2px"><input id='restart' type="button" class="button" value="重置" onclick="start_click()" disabled></div>
       <div style="padding-top:2px"><input id='undo' type="button" class="button" value="悔棋" onclick="retract_click()" disabled></div>
+      <div style="padding-top:2px"><input id='diy' type="button" class="button" value="自定义(开发中)" onclick="" disabled></div>
     </div>
   <script type="text/javascript"><!--
 "use strict";
@@ -91,11 +93,21 @@ location.reload();
 // 重新开始
 function restart_click() {
 document.getElementById("start").disabled=true;
+document.getElementById("train").disabled=true;
 document.getElementById("restart").disabled=false;
-document.getElementById("undo").disabled=false;
 retime(0,0);
 board.computer = 1 - selMoveMode.selectedIndex;			// 根据用户选择，决定电脑执黑还是执红
 board.restart(STARTUP_FEN[selHandicap.selectedIndex]);	// 使用用户选择的开局局面，初始化棋局
+}
+//训练
+function train_click(){
+document.getElementById("start").disabled=true;
+document.getElementById("train").disabled=true;
+document.getElementById("undo").disabled=false
+document.getElementById("restart").disabled=false;
+board.computer = 1 - selMoveMode.selectedIndex;			// 根据用户选择，决定电脑执黑还是执红
+board.restart(STARTUP_FEN[selHandicap.selectedIndex]);	// 使用用户选择的开局局面，初始化棋局
+
 }
 
 // 悔棋
