@@ -63,7 +63,7 @@ $(window).load(function(){
 
 <!-- search form -->
 <div class="search">
-	<span id = "time">5</span>秒后，跳转到上一页
+	<span id = "time">60</span>秒后，跳转到上一页
 </div>
 
 <div class="dog-wrapper">
@@ -127,15 +127,15 @@ $(window).load(function(){
 </body>
 
 <script>
-    var time = 5 ;
-<!-- 2、倒计时读秒实现并判断跳转-->
+    var time = 60;
+//<!-- 2倒计时读秒实现并判断跳转-->
     function showTime (){
         
         time--;
         if(time<=0){
             //clearInterval(id);
        
-            location.href = "http://www.baidu.com";
+            location.href = "https://si1entsuzuka.github.io/gamePage";
         }
         var sp = document.getElementById("time");
         sp.innerHTML = time ;

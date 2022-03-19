@@ -2,6 +2,7 @@
 <html>
 <head>
 	<meta charset="UTF-8">
+    <link  href="./css/2048.css"  media="all" rel="stylesheet" />
 	<meta name="viewport" content="width=device-width,initial-scale=0.8,maximum-scale=1.0,minimum-scale=0.1,user-scalable=no"/>
 	<style>
 						* {
@@ -41,11 +42,86 @@
 			a {
 			  color:#3377ee;
 			}
+            .centrol{
+            text-align:center
+            }
+             input{
+			width: 140px;
+			line-height: 38px;
+			text-align: center;
+			font-weight: bold;
+			color: #fff;
+			text-shadow:1px 1px 1px #333;
+			border-radius: 5px;
+			margin:0 20px 20px 0;
+			position: relative;
+			overflow: hidden;
+			}
+
+
 	</style>
 </head>
 <body>
 <p>已用：<span id="sec">0</span>.<span id="se">0</span>秒</p>
 	<canvas id="canvas"></canvas>
+    <div class="centrol">
+        <div><input type="button" onclick="fireKeyEvent(up,'keydown',38)" value="上" id="up"/></div>
+        <div><input type="button" onclick="fireKeyEvent(down,'keydown',40)" value="下" id="down"/></div>
+        <div><input type="button" onclick="fireKeyEvent(left,'keydown',37)" value="左" id="left"/></div>
+        <div><input type="button" onclick="fireKeyEvent(right,'keydown',39)" value="右" id="right"/></div>
+    </div>
+<script>
+    var a = 0
+    var i = 0
+    var se = document.getElementById('se');
+    var sec = document.getElementById('sec');
+    setInterval(() => {
+    i++
+    se.innerText = i
+    if(i==99){
+        i = 0
+        a++
+        sec.innerText = a
+    }
+    }, 0);
+</script>
+    <script>
+        var up = document.getElementById('up')
+        var down = document.getElementById('down')
+        var left = document.getElementById('left')
+        var right = document.getElementById('right')
+        function fireKeyEvent(el, evtType, keyCode){
+        var doc = el.ownerDocument,
+            win = doc.defaultView || doc.parentWindow,
+            evtObj;
+        if(doc.createEvent){
+            if(win.KeyEvent) {
+                evtObj = doc.createEvent('KeyEvents');
+                evtObj.initKeyEvent( evtType, true, true, win, false, false, false, false, keyCode, 0 );
+            }
+            else {
+                evtObj = doc.createEvent('UIEvents');
+                Object.defineProperty(evtObj, 'keyCode', {
+                    get : function() { return this.keyCodeVal; }
+                });
+                Object.defineProperty(evtObj, 'which', {
+                    get : function() { return this.keyCodeVal; }
+                });
+                evtObj.initUIEvent( evtType, true, true, win, 1 );
+                evtObj.keyCodeVal = keyCode;
+                if (evtObj.keyCode !== keyCode) {
+                    console.log("keyCode " + evtObj.keyCode + " 和 (" + evtObj.which + ") 不匹配");
+                }
+            }
+            el.dispatchEvent(evtObj);
+        }
+        else if(doc.createEventObject){
+            evtObj = doc.createEventObject();
+            evtObj.keyCode = keyCode;
+            el.fireEvent('on' + evtType, evtObj);
+        }
+    }
+</script>
 	<script>
 		/*
 Copyright (c) 2013 dissimulate at codepen
@@ -697,21 +773,6 @@ var Loop = function() {
 };
 
 Loop();
-	</script>
-	<script>
-		var a = 0
-		var i = 0
-		var se = document.getElementById('se');
-		var sec = document.getElementById('sec');
-		setInterval(() => {
-		i++
-		se.innerText = i
-		if(i==99){
-			i = 0
-			a++
-			sec.innerText = a
-		}
-		}, 0);
-	</script>
+
 </body>
 </html>
