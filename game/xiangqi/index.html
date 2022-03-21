@@ -72,12 +72,12 @@ label {
     </div>
       <div style="padding-top:2px"><a href="https://si1entsuzuka.github.io/Chats/xiangqi/"><input id='chats' type="button" class="button" value="排行榜"></a></div>
       <div style="padding-top:2px"><input id='start' type="button" class="button" value="开始" onclick="start_click()"></div>
-      <div style="padding-top:2px"><input id='train' type="button" class="button" value="训练" onclick="train_click()"></div>
 	    <div style="padding-top:2px"><input id='restart' type="button" class="button" value="重置" onclick="restart_click()" disabled></div>
       <div style="padding-top:2px"><input id='undo' type="button" class="button" value="悔棋" onclick="retract_click()" disabled></div>
-      <div style="padding-top:2px"><input id='diy' type="button" class="button" value="自定义(开发中)" onclick="" disabled></div>
+      <div style="padding-top:2px"><input id='diy' type="button" class="button" value="自定义" onclick="custom()" ></div>
     </div>
-  <script type="text/javascript">
+  </body>
+<script type="text/javascript">
 "use strict";
 
 // 可供选择的开局局面
@@ -101,9 +101,12 @@ board.computer = 1;								// 电脑默认执黑
 function restart_click()
 {
 document.getElementById("start").disabled=false;
-document.getElementById("train").disabled=false;
 document.getElementById("restart").disabled=true;
 document.getElementById("undo").disabled=true;
+document.getElementById("diy").disabled=false;
+var label0 = document.getElementById('selHandicap')
+label0[0].text='请选择模式';
+label0.disabled=false;
 board.restart(STARTUP_FEN[0])
 clearInterval(myter)
 }
@@ -115,27 +118,35 @@ alert("请选择模式")
 }else{
 reFtime()
 document.getElementById("start").disabled=true;
-document.getElementById("train").disabled=true;
 document.getElementById("restart").disabled=false;
+document.getElementById("undo").disabled=false;
+document.getElementById("diy").disabled=true;
 retime(0,0,1);
 board.computer = 1 - selMoveMode.selectedIndex;			// 根据用户选择，决定电脑执黑还是执红
 board.restart(STARTUP_FEN[selHandicap.selectedIndex]);	// 使用用户选择的开局局面，初始化棋局
 }}
-//训练
-function train_click(){
-var selection = document.getElementById('selHandicap')
-if(selection.value==0){undefined 
-alert("请选择模式")
-}else{
-reFtime()
+//自定义
+function custom(){
+var code = prompt("请输入邀请码：");
+if(code == 114514){undefined
+var code1 = prompt("输入自定义代码")
+if (code1 != null){undefined
 document.getElementById("start").disabled=true;
-document.getElementById("train").disabled=true;
-document.getElementById("undo").disabled=false;
 document.getElementById("restart").disabled=false;
+document.getElementById("undo").disabled=false;
+document.getElementById("diy").disabled=true;
+var label0 = document.getElementById('selHandicap')
+label0[0].text='自定义';
+label0.disabled=true;
 board.computer = 1 - selMoveMode.selectedIndex;			// 根据用户选择，决定电脑执黑还是执红
-board.restart(STARTUP_FEN[selHandicap.selectedIndex]);	// 使用用户选择的开局局面，初始化棋局
-}}
+board.restart(code1);	// 使用用户选择的开局局面，初始化棋局
+}else{alert('请输入代码')}
+}else{undefined
+alert('请输入正确的邀请码')
+}
 
+
+}
 // 悔棋
 function retract_click() {
 board.retract();
@@ -157,10 +168,7 @@ board.retract();
       var sec = document.getElementById('sec');
       sec.innerText = 0
       se.innerText = 0
-  }
-        
-
-      
+  } 
   </script>
-  </body>
+
 </html>
