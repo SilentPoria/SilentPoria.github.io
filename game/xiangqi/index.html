@@ -1,5 +1,6 @@
 <html>
   <head>
+    <meta charset="utf-8" name="viewport" content="width=device-width,initial-scale=0.6,maximum-scale=1.0,minimum-scale=0.1,user-scalable=no"/>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
     <title>xiangqi</title>
     <script type="text/javascript" src="board.js"></script>
@@ -40,7 +41,7 @@ label {
 }
     --></style>
   </head>
-  <body>
+  <body backgroundImage="./images/bg.jpg">
     <div style="text-align:center;font-size:28px;font-family:黑体"></div>
     <div style="height:16px"></div>
     <div style="text-align:center;white-space:nowrap">
@@ -56,7 +57,7 @@ label {
         <option value="2">双人对战 double</option>
       </select></div>
 	  <div class="label">先手棋子难度系数</div>
-      <div><select id="selHandicap" style="padding:0px">
+      <div><select id="selHandicap" style="padding:0px",size='3'>
         <option selected value="0" disabled>请选择难度</option>
         <option value="1">Lv.HD 不让子</option>
         <option value="2">Lv.HD-1 对让左马</option>
@@ -129,7 +130,7 @@ board.restart(STARTUP_FEN[selHandicap.selectedIndex]);	// 使用用户选择的�
 function custom(){
 var code = prompt("请输入邀请码：");
 if(code == 114514){undefined
-var code1 = prompt("输入自定义代码")
+var code1 = prompt("输入自定义代码",'4k4/9/9/9/9/9/9/9/9/4K4')
 if (code1 != null){undefined
 document.getElementById("start").disabled=true;
 document.getElementById("restart").disabled=false;
