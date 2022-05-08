@@ -30,10 +30,8 @@
 				<div class="inner">
 					<h1 class="nono">Welcome to Si1lentSuzuka's site!</h1>
 					<div id="appear">
-						<!--<a href="https://hitokoto.cn/">『<span class='nono' id="hitokoto">我又不是因为你们的评价才去当的英雄，是因为我想当才去当的</span>』<br>-->
-						<!--<a href="https://hitokoto.cn/">from ——「<span id="sfrom">一拳超人</span>」</a>-->
-					<h2>现在距离</h2><h1>中考</h1><h2>开始还有</h2>
-						<a><span id="showtime"></span></a>
+						<a href="https://hitokoto.cn/">『<span class='nono' id="hitokoto">我又不是因为你们的评价才去当的英雄，是因为我想当才去当的</span>』<br>
+						<a href="https://hitokoto.cn/">from ——「<span id="sfrom">一拳超人</span>」</a>
 					</div>
 				</div>
 			</div>
@@ -145,7 +143,7 @@
         }
 </script>
 <!--获取文字-->
-<!--<script type="text/javascript">
+<script type="text/javascript">
 	fetch('https://v1.hitokoto.cn/?c=b&c=c&c=a&c=d&c=e&c=f&c=a&c=g&c=h&c=i&c=j&c=k')
     .then(function (res){
       return res.json();
@@ -156,15 +154,15 @@
       hitokoto.innerText = data.hitokoto;
       sfrom.innerText = data.from
     })
-</script>-->
+</script>
 <!--刷新文字-->
-<!--<script type="text/javascript">
+<script type="text/javascript">
 setInterval(() => {
 	disappear()
 	fetchG()
 	appear()
 }, 60000);
-</script>-->
+</script>
 <script type="text/javascript">
 var showtime = function () {
     var nowtime = new Date(),  //获取当前时间
