@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+ 
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+ 
+    <link rel="stylesheet" href="./css.css">
+    <style type="text/css">
+    input {
+    width:270px;                               
+    border:1px solid #d4cdba;
+    padding:2px; 
+   }
+   span{
+    position: relative;
+    color: rgb(7, 4, 4，0.7);
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 5px;
+    margin-bottom: 30px;
+    cursor: pointer;
+
+   }
+    </style>
+    <title>手动</title>
+</head>
+ 
+<body>
+    <section>
+        <!-- 背景颜色 -->
+        <div class="color"></div>
+        <div class="color"></div>
+        <div class="color"></div>
+        <div class="box">
+            <!-- 背景圆 -->
+            <div class="circle" style="--x:0"></div>
+            <div class="circle" style="--x:1"></div>
+            <div class="circle" style="--x:2"></div>
+            <div class="circle" style="--x:3"></div>
+            <div class="circle" style="--x:4"></div>
+            <!-- 登录框 -->
+            <div class="container">
+                <div class="form">
+                    <h2>手动phi-Csv生成器</h2>
+                    <p><span>Chart谱面:</span><br/>
+                        <input type="text" id="Chart" placeholder="谱面(zip文件内完整路径) PS:记得加后缀" />
+                       </p>
+                    <p><span>Music音乐:</span><br/>
+                        <input type="text" id="Music" placeholder="音乐(zip文件内完整路径) PS:记得加后缀" />
+                       </p>
+                    <p><span>Image图片:</span><br/>
+                        <input type="text" id="Image" placeholder="图片(zip文件内完整路径) PS:记得加后缀" />
+                       </p>
+                    <p><span>AspectRatio宽高比:</span><br/>
+                        <input type="text" id="AspectRatio" value=1.777778 placeholder="宽高比(默认1.777778，即16:9)" />
+                       </p>
+                    <p><span>ScaleRatio按键缩放:</span><br/>
+                        <input type="text" id="ScaleRatio" value=8e3 placeholder="按键缩放(数值越大Note越小，默认8e3)" />
+                       </p>
+                    <p><span>GlobalAlpha背景不透明度:</span><br/>
+                        <input type="text" name="GlobalAlpha" value=0.6 placeholder="背景变暗(背景不透明度，默认0.6)" />
+                    <p><span>Name名称:</span><br/>
+                        <input type="text" id="Name" placeholder="名称(显示在画面左下角)"  />
+                    </p>
+                       <p><span>Level等级:</span><br/>
+                        <input type="text" id="Level" placeholder="等级(显示在画面右下角)"  />
+                       </p>
+                    <p><span>Illustrator曲绘:</span><br/>
+                        <input type="text" id="Illustrator" placeholder="曲师(显示于过渡动画)"  />
+                       </p>
+                    <p><span>Designer谱师:</span><br/>
+                        <input type="text" id="Designer" placeholder="谱师(显示于过渡动画)"  />
+                       </p>
+                    <div class="inputBox">
+                        <input type="button" value="生成" onclick="Manual()">
+
+                    </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+</body>
+<script type="text/javascript" src="./main.js"></script>
+</html>
