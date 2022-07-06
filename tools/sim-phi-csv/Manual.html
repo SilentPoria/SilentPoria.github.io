@@ -121,6 +121,16 @@
             saveAs(csvString)
             }
     </script>
+    <script type="text/javascript">
+        document.addEventListener('visibilitychange', function() {
+         var isHidden = document.hidden;
+         if (isHidden) {
+          document.title = 'ZZzz…(。-ω-)';
+         } else {
+          document.title = '自动';
+         }
+        });
+   </script>
 </body>
 
 
