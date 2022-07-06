@@ -160,7 +160,7 @@ section .color:nth-child(3) {
  
 .form h2 {
     position: relative;
-    color: #fff;
+    color: rgb(21, 197, 182);
     font-size: 20px;
     font-weight: 600;
     letter-spacing: 5px;
@@ -225,12 +225,12 @@ section .color:nth-child(3) {
  
 .forget {
     margin-top: 6px;
-    color: #fff;
+    color: rgb(241, 141, 236);
     letter-spacing: 1px;
 }
  
 .forget a {
-    color: #fff;
+    color: rgb(241, 141, 236);
     font-weight: 600;
     text-decoration: none;
 }
