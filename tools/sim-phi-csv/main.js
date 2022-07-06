@@ -21,30 +21,7 @@ function Manual(){
             Illustrator:Illustrator1,
             Designer:Designer1
         }]
-    const csvString = [
-        [" Chart ",
-            "Music "
-        ],
-        ...frame_label.map(item => [
-            item.Chart,
-            item.Music,
-        ])
-    ]
-        .map(e => e.join(","))
-        .join('\n')
-    
-    // 导出
-    let link = document.createElement("a")
-    let exportContent = '\uFEFF'
-    let blob = new Blob([exportContent+csvString],{
-        type:'text/plain;charset=utrf-8'
-    })
-    link.id = "download-csv"
-    link.setAttribute("href", URL.createObjectURL(blob))
-    link.setAttribute('download', csv_name + ".csv")
-    document.body.appendChild(link)
-    link.click()
-    
+    console.log(list)
 }
 //获取输入信息
 //判断是否有空输入框
