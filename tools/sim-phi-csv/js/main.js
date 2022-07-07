@@ -24,10 +24,7 @@ function Manual(){
             "Illustrator":Illustrator1,
             "Designer":Designer1
         }]
-    console.log('================================================================')
-    console.log('这是输入框获取的数据:')
-    console.log(list)
-    console.log('================================================================')
+
     return list;
 }
 

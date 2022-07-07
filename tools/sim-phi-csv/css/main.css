@@ -225,12 +225,12 @@ section .color:nth-child(3) {
  
 .forget {
     margin-top: 6px;
-    color: rgb(135, 137, 241);
+    color: #fff;
     letter-spacing: 1px;
 }
  
 .forget p {
-    color: rgb(132, 133, 230);
+    color: #fff;
     font-weight: 600;
     text-decoration: none;
 }
