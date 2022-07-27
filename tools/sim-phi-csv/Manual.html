@@ -56,7 +56,13 @@
                         <input type="text" id="AspectRatio" value=1.777778 placeholder="宽高比(默认1.777778，即16:9)" />
                        </p>
                     <p><span>ScaleRatio按键缩放:</span><br/>
-                        <input type="text" id="ScaleRatio" value=8e3 placeholder="按键缩放(数值越大Note越小，默认8e3)" />
+                        <select id="ScaleRatio" style="width:20em">
+                            <option value="1e4">极小</option>
+                            <option value="9e3">较小</option>
+                            <option value="8e3" selected>默认</option>
+                            <option value="7e3">较大</option>
+                            <option value="6e3">极大</option>
+                        </select>
                        </p>
                     <p><span>GlobalAlpha背景不透明度:</span><br/>
                         <input type="text" id="GlobalAlpha" value=0.6 placeholder="背景变暗(背景不透明度，默认0.6)" />

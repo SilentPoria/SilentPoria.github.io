@@ -5,7 +5,8 @@ function Manual(){
     var Music1 = document.getElementById('Music').value
     var Image1 = document.getElementById('Image').value
     var AspectRatio1 = document.getElementById('AspectRatio').value
-    var ScaleRatio1 = document.getElementById('ScaleRatio').value
+    var index = document.getElementById('ScaleRatio').selectedIndex 
+    var ScaleRatio1 = document.getElementById('ScaleRatio').options[index].value
     var GlobalAlpha1 = document.getElementById('GlobalAlpha').value
     var Name1 = document.getElementById('Name').value
     var Level1 = document.getElementById('Level').value
