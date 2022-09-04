@@ -8,23 +8,7 @@ const urls = {
 	md5: ['//cdn.jsdelivr.net/npm/md5-js', '//fastly.jsdelivr.net/npm/md5-js'],
 }
 document.oncontextmenu = e => e.preventDefault(); //qwq
-for (const i of document.getElementById('view-nav').children) {
-	i.addEventListener('click', function() {
-		for (const j of this.parentElement.children) j.classList.remove('active');
-		const doc = document.getElementById('view-doc');
-		const msg = document.getElementById('view-msg');
-		this.classList.add('active');
-		if (i.id == 'msg') {
-			doc.src = '';
-			doc.classList.add('hide');
-			msg.classList.remove('hide');
-		} else {
-			if (doc.getAttribute('src') != `docs/${i.id}.html`) doc.src = `docs/${i.id}.html`;
-			msg.classList.add('hide');
-			doc.classList.remove('hide');
-		}
-	});
-}
+
 document.getElementById('cover-dark').addEventListener('click', () => {
 	document.getElementById('cover-dark').classList.add('fade');
 	document.getElementById('cover-view').classList.add('fade');
@@ -89,8 +73,8 @@ const message = {
 	}
 }
 //
-const upload = document.getElementById('upload');
-const uploads = document.getElementById('uploads');
+const upload = document.getElementById('upload-zip');
+const uploads = document.getElementById('uploads-zip');
 const mask = document.getElementById('mask');
 const select = document.getElementById('select');
 const selectbg = document.getElementById('select-bg');
@@ -802,7 +786,7 @@ function getOffsetTop(element) {
 	if (!(element instanceof HTMLElement)) return NaN;
 	if (full.check(element)) return document.documentElement.scrollTop;
 	let elem = element;
-	let a = 0;
+	let a = 0;化
 	while (elem instanceof HTMLElement) {
 		a += elem.offsetTop;
 		elem = elem.offsetParent;

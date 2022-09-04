@@ -6,16 +6,16 @@
 	font-style: normal;
 	font-weight: regular;
 	/* IE9 Compat Modes */
-	src: url('//lib.baomitu.com/fonts/mina/mina-regular.eot');
+	src: url('/font/mina-regular.eot');
 	src: local('Mina'), local('Mina-Normal'),
 		/* IE6-IE8 */
-		url('//lib.baomitu.com/fonts/mina/mina-regular.eot?#iefix') format('embedded-opentype'),
+		url('/font/mina-regular.eot?#iefix'),
 		/* Super Modern Browsers */
-		url('//lib.baomitu.com/fonts/mina/mina-regular.woff2') format('woff2'),
+		url('/font/mina-regular.woff2')
 		/* Modern Browsers */
-		url('//lib.baomitu.com/fonts/mina/mina-regular.woff') format('woff'),
+		url('/font/mina-regular.woff'),
 		/* Safari, Android, iOS */
-		url('//lib.baomitu.com/fonts/mina/mina-regular.ttf') format('truetype'),
+		url('/font/mina-regular.ttf'),
 		/* Legacy iOS */
 		url('//lib.baomitu.com/fonts/mina/mina-regular.svg#Mina') format('svg');
 }
