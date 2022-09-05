@@ -6,6 +6,19 @@ let g_notes = [0,0] //[early,late]
 let bad_notes = 0 //bad
 let loader = 'False'//加载状态
 
+//
+const inputName = document.getElementById('input-name');//歌名
+const inputLevel = document.getElementById('input-level');//等级
+const inputDesigner = document.getElementById('input-designer');//曲绘
+const inputIllustrator = document.getElementById('input-illustrator');//谱师名称
+const inputOffset = document.getElementById('input-offset');//延迟
+const showPoint = document.getElementById('showPoint');//
+const lineColor = document.getElementById('lineColor');
+const autoplay = document.getElementById('autoplay');
+const hyperMode = document.getElementById('hyperMode');
+const showTransition = document.getElementById('showTransition');
+
+
 //////////////////////////
 const message = {
 	out: document.getElementById('msg-out'),
@@ -56,7 +69,7 @@ const loadFile = function(file) {
 
 }
 
-const actx = oggCompatible ? new AudioContext() : new oggmented.OggmentedAudioContext(); //兼容Safari
+//兼容Safari
 const res = {} //存放资源
 //初始化 //////////////////////////////////////此处参考lchzh代码
 window.onload = async function() {

@@ -81,7 +81,7 @@ input[type="file"]+label {
 	padding: 0.1em 0.6em;
 	margin: 0.1em;
 	cursor: pointer;
-    border-radius:25px;
+    border-radius:5px;
 }
 
 button:hover,
