@@ -11,15 +11,14 @@ const inputName = document.getElementById('input-name');//歌名
 const inputLevel = document.getElementById('input-level');//等级
 const inputDesigner = document.getElementById('input-designer');//曲绘
 const inputIllustrator = document.getElementById('input-illustrator');//谱师名称
-const inputOffset = document.getElementById('input-offset');//延迟
-const showPoint = document.getElementById('showPoint');//
-const lineColor = document.getElementById('lineColor');
+const inputOffset = document.getElementById('input-offset');//延迟//
+const lineColor = document.getElementById('lineColor');//
 const autoplay = document.getElementById('autoplay');
 const hyperMode = document.getElementById('hyperMode');
 const showTransition = document.getElementById('showTransition');
 
 
-//////////////////////////
+//抛出信息
 const message = {
 	out: document.getElementById('msg-out'),
     sendinfo(msg) {

@@ -12,15 +12,13 @@
 <body>
 	<div class="main">
         <h1 class="title">Re:Phigros Simulator</h1>
-        <div class="select-zip">
-            <div id="uploads-zip" class="upload-zip">
-                <input type="button" id="demo" value="Demo" style="display:none">
-                <input type="file" accept="application/x-zip-compressed" id="upload-zip" >
-                <label for="upload-zip">选择zip</label>
-                <input type="text" style="width:0;flex-grow:1;flex-shrink:1;pointer-events:none" id="filename">
-            </div>
-            <input type="button" value="重置" onclick="location.reload(true)">
-        </div>
+		<div id="uploads-zip" class="upload-zip" class = 'fade'>
+			<input type="button" id="demo" value="Demo" style="display:none">
+			<input type="file" accept="application/x-zip-compressed" id="upload-zip" disabled>
+			<label for="upload-zip" disabled>选择zip</label>
+			<input type="text" style="width:0;flex-grow:1;flex-shrink:1;pointer-events:none" id="filename">
+		</div>
+		<input type="button" value="重置" onclick="location.reload(true)">
 		<div id="select">
 			<div>谱面：<select id="chart" style="width:6em"></select></div>
 			<div>音乐：<select id="bgm" style="width:6em"></select></div>
@@ -87,7 +85,7 @@
 			</div>
 		</div>
 	</div>
-	<noscript><strong style="color:red">此浏览器不支持JavaScript，该脚本无法运行。</strong></noscript>
+	<noscript><strong style="color:red">This browser does not support JavaScript and cannot run programs!</strong></noscript>
 </body>
 
 </html>
