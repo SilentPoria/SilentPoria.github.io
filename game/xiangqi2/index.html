@@ -4,63 +4,86 @@
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
     <title>xiangqi2</title>
     <script type="text/javascript" src="board.js"></script>
-	<script type="text/javascript" src="position.js"></script>
-	<script type="text/javascript" src="search.js"></script>
-	<script type="text/javascript" src="book.js"></script>
-    <style type="text/css"><!--
-body {
-  background: url(images/background.gif);
-}
-	
-span.td {
-  display: inline-block;
-}
+	  <script type="text/javascript" src="position.js"></script>
+	  <script type="text/javascript" src="search.js"></script>
+	  <script type="text/javascript" src="book.js"></script>
+    <style type="text/css">
+      .start {
+      border: 2px solid #e8e8e8;
+      padding: 15px;
+      border-radius: 10px;
+      background-color: #212121;
+      font-size: small;
+      font-weight: bold;
+      text-align: center;
+      }
 
-div.label {
-  font-size: 14px;
-  padding:2px;
-}
+      .input:focus {
+      outline-color: white;
+      background-color: #212121;
+      color: #e8e8e8;
+      box-shadow: 5px 5px #888888;
+      }
 
-select {
-  font-size: 14px;
-  width: 108px;
-  padding:2px;
-}
+      body {
+        background: url(images/background.gif);
+      }
+        
+      span.td {
+        display: inline-block;
+      }
 
-option {
-  font-size: 14px;
-}
+      div.label {
+        font-size: 14px;
+        padding:2px;
+      }
 
-input.button {
-  font-size: 14px;
-  width: 108px;
-}
+      select {
+        font-size: 14px;
+        width: 108px;
+        padding:2px;
+      }
 
-label {
-  font-size: 14px;
-}
-    --></style>
+      option {
+        font-size: 14px;
+      }
+
+      input.button {
+        font-size: 14px;
+        width: 108px;
+      }
+
+      label {
+        font-size: 14px;
+      }
+  </style>
   </head>
-  <body backgroundImage="./images/bg.jpg">
+  <body backgroundImage="images/bg.jpg">
     <div style="text-align:center;font-size:28px;font-family:黑体"></div>
     <div style="height:16px"></div>
     <div style="text-align:center;white-space:nowrap">
       <span class="td" style="margin-right:10px">
         <div id="container"></div>
+        <span>ai计算用时 >>><span id='AItimer'>0</span>s</span>
       </span><span class="td" style="vertical-align:top;width:120px;"><div style="text-align:left">
-	  <div class="label">残局</div>
+	  <div class="label">模式</div>
+      <div>
+        <select id="selMoveMode" size="3">
+          <option selected value="0">玩家先手</option>
+          <option value="1">电脑先手</option>
+          <option value="2">双人对战 double</option>
+        </select>
+      </div>
+	  <div class="label">棋盘</div>
       <div><select id="selHandicap" style="padding:0px",size='3'>
-        <option selected value="0" disabled>请选择残局</option>
-        <option value="1">Lv.4 不让子</option>
-        <option value="2">Lv.2 对让左马</option>
-        <option value="3">Lv.3 对让双马</option>
-        <option value="4">Lv.1 对让九子</option>
-        <option value="5">Lv.5 让左马</option>
-        <option value="6">Lv.6 让双马</option>
-        <option value="7">Lv.7 让九子</option>
-        <option value="8" disabled>Lv.8 愚人节限定</option>
-        <option value="9">双人对战 标准</option>
-
+        <option selected value="0" disabled>请选择棋盘</option>
+        <option value="1">标准棋盘</option>
+        <option value="2">黑让左马</option>
+        <option value="3">黑让双马</option>
+        <option value="4">黑让九子</option>
+        <option value="5">红让左马</option>
+        <option value="6">红让双马</option>
+        <option value="7">红让九子</option>
       </select>
     </div>
       <div style="padding-top:2px"><input id='start' type="button" class="button" value="开始" onclick="start_click()"></div>
@@ -81,13 +104,27 @@ var STARTUP_FEN = [
 "rnbakabnr/9/1c5c1/p1p1p1p1p/9/9/P1P1P1P1P/1C5C1/9/RNBAKAB1R w",//5
 "rnbakabnr/9/1c5c1/p1p1p1p1p/9/9/P1P1P1P1P/1C5C1/9/R1BAKAB1R w",//6
 "rnbakabnr/9/1c5c1/p1p1p1p1p/9/9/9/1C5C1/9/RN2K2NR w",//7
-"4k4/9/ppppppppp/ppppppppp/9/9/PPPPPPPPP/PPPPPPPPP/9/4K4 w",//8
-"rnbakabnr/9/1c5c1/p1p1p1p1p/9/9/P1P1P1P1P/1C5C1/9/RNBAKABNR w",//9
 ];
 
 var board = new Board(container, "images/");	// 实例化棋盘对象
 board.setSearch(16);							// 设置搜索算法
 board.computer = 1;								// 电脑默认执黑
+
+// 开始
+function start_click() {
+var selection = document.getElementById('selHandicap')
+if(selection.value==0){undefined 
+alert("请选择模式")
+}else{
+document.getElementById("start").disabled=true;
+document.getElementById("restart").disabled=false;
+document.getElementById("undo").disabled=false;
+board.computer = 1 - selMoveMode.selectedIndex;			// 根据用户选择，决定电脑执黑还是执红
+board.restart(STARTUP_FEN[selHandicap.selectedIndex]);	// 使用用户选择的开局局面，初始化棋局
+}}
+
+AItimer
+
 //重置
 function restart_click()
 {
@@ -97,22 +134,8 @@ document.getElementById("undo").disabled=true;
 var label0 = document.getElementById('selHandicap')
 label0[0].text='请选择模式';
 label0.disabled=false;
-board.restart(STARTUP_FEN[0])
+board.restart(STARTUP_FEN[selHandicap.selectedIndex])
 }
-// 开始
-function start_click() {
-var selection = document.getElementById('selHandicap')
-if(selection.value==0){undefined 
-alert("请选择残局")
-}else{
-document.getElementById("start").disabled=true;
-document.getElementById("restart").disabled=false;
-document.getElementById("undo").disabled=false;
-board.computer = 1 
-board.restart(STARTUP_FEN[selHandicap.selectedIndex]);	// 使用用户选择的开局局面，初始化棋局
-}}
-
-
 
 // 悔棋
 function retract_click() {

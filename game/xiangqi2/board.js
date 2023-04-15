@@ -197,7 +197,7 @@ Board.prototype.response = function() {
       this_.addMove(board.search.searchMain(LIMIT_DEPTH, 1000), true);
       this_.thinking.style.visibility = "hidden";
       var end = new Date().getTime();
-      x.innerText=end-start;
+      x.innerText=MillisecondToDate(end-start);
       console.log('cost is', `${end - start}ms`);
       
   }, 250); 
@@ -277,4 +277,19 @@ Board.prototype.retract = function() {
 
   this.flushBoard();
   this.response();
-}
+};
+
+
+function MillisecondToDate(msd) {
+  var time = parseFloat(msd) / 1000; //先将毫秒转化成秒
+  if (null != time && "" != time) {
+      if (time > 60 && time < 60 * 60) {
+          time = parseInt(time / 60.0) + "min" + parseInt((parseFloat(time / 60.0) - parseInt(time / 60.0)) * 60) + "s";
+      } else if (time >= 60 * 60 && time < 60 * 60 * 24) {
+          time = parseInt(time / 3600.0) + "h" + parseInt((parseFloat(time / 3600.0) - parseInt(time / 3600.0)) * 60) + "min" + parseInt((parseFloat((parseFloat(time / 3600.0) - parseInt(time / 3600.0)) * 60) - parseInt((parseFloat(time / 3600.0) - parseInt(time / 3600.0)) * 60)) * 60) + "s";
+      } else {
+          time = parseInt(time) + "s";
+      }
+  }
+  return time;
+};
