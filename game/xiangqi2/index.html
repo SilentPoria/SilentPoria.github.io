@@ -7,6 +7,7 @@
 	  <script type="text/javascript" src="position.js"></script>
 	  <script type="text/javascript" src="search.js"></script>
 	  <script type="text/javascript" src="book.js"></script>
+    <link rel="stylesheet" href="./css.css">
     <style type="text/css">
       .start {
       border: 2px solid #e8e8e8;
@@ -59,37 +60,40 @@
   </style>
   </head>
   <body backgroundImage="images/bg.jpg">
-    <div style="text-align:center;font-size:28px;font-family:黑体"></div>
+    <div style="text-align:center;font-size:28px;font-family:黑体">xiangqi2</div>
     <div style="height:16px"></div>
-    <div style="text-align:center;white-space:nowrap">
+    <div id="main" style="text-align:center;white-space:nowrap">
       <span class="td" style="margin-right:10px">
         <div id="container"></div>
-        <span>ai计算用时 >>><span id='AItimer'>0</span>s</span>
-      </span><span class="td" style="vertical-align:top;width:120px;"><div style="text-align:left">
-	  <div class="label">模式</div>
+      </span><span class="td" style="vertical-align:top;width:120px;">
+	    <div class="label">模式</div>
       <div>
         <select id="selMoveMode" size="3">
-          <option selected value="0">玩家先手</option>
-          <option value="1">电脑先手</option>
-          <option value="2">双人对战 double</option>
+          <option selected value="0">玩家先手(人机)</option>
+          <option value="1">电脑先手(人机)</option>
+          <option value="2">双人</option>
         </select>
       </div>
-	  <div class="label">棋盘</div>
-      <div><select id="selHandicap" style="padding:0px",size='3'>
-        <option selected value="0" disabled>请选择棋盘</option>
-        <option value="1">标准棋盘</option>
-        <option value="2">黑让左马</option>
-        <option value="3">黑让双马</option>
-        <option value="4">黑让九子</option>
-        <option value="5">红让左马</option>
-        <option value="6">红让双马</option>
-        <option value="7">红让九子</option>
-      </select>
-    </div>
+	    <div class="label">棋盘</div>
+      <div>
+        <select id="selHandicap" style="padding:0px" size='3'>
+          <option selected value="0" disabled>请选择棋盘</option>
+          <option value="1">标准棋盘</option>
+          <option value="2">黑让左马</option>
+          <option value="3">黑让双马</option>
+          <option value="4">黑让九子</option>
+          <option value="5">红让左马</option>
+          <option value="6">红让双马</option>
+          <option value="7">红让九子</option>
+        </select>
+      </div>
+      <div style="padding-top:2px"><input id='undo' type="button" class="button" value="更多设置" onclick="inmp('该功能正在开发中')" ></div>
       <div style="padding-top:2px"><input id='start' type="button" class="button" value="开始" onclick="start_click()"></div>
-	    <div style="padding-top:2px"><input id='restart' type="button" class="button" value="重置" onclick="restart_click()" disabled></div>
+      <div style="padding-top:2px"><input id='restart' type="button" class="button" value="重置" onclick="restart_click()" disabled></div>
       <div style="padding-top:2px"><input id='undo' type="button" class="button" value="悔棋" onclick="retract_click()" disabled></div>
     </div>
+    <div id="snackbar" class="msg">Some text some message..</div>
+    <div id="snackbar" class="Ai">Some text some message..</div>
   </body>
 <script type="text/javascript">
 "use strict";
@@ -109,39 +113,42 @@ var STARTUP_FEN = [
 var board = new Board(container, "images/");	// 实例化棋盘对象
 board.setSearch(16);							// 设置搜索算法
 board.computer = 1;								// 电脑默认执黑
-
-// 开始
-function start_click() {
-var selection = document.getElementById('selHandicap')
-if(selection.value==0){undefined 
-alert("请选择模式")
-}else{
-document.getElementById("start").disabled=true;
-document.getElementById("restart").disabled=false;
-document.getElementById("undo").disabled=false;
-board.computer = 1 - selMoveMode.selectedIndex;			// 根据用户选择，决定电脑执黑还是执红
-board.restart(STARTUP_FEN[selHandicap.selectedIndex]);	// 使用用户选择的开局局面，初始化棋局
-}}
-
-AItimer
-
 //重置
 function restart_click()
 {
 document.getElementById("start").disabled=false;
 document.getElementById("restart").disabled=true;
 document.getElementById("undo").disabled=true;
-var label0 = document.getElementById('selHandicap')
-label0[0].text='请选择模式';
-label0.disabled=false;
-board.restart(STARTUP_FEN[selHandicap.selectedIndex])
-}
-
+var label0 = document.getElementById('selHandicap');
+board.computer = -1;
+board.restart(STARTUP_FEN[0])};
+// 开始
+function start_click() {
+var selection = document.getElementById('selHandicap')
+if(selection.value==0){undefined 
+inmp("请选择模式")
+}else{
+document.getElementById("start").disabled=true;
+document.getElementById("restart").disabled=false;
+document.getElementById("undo").disabled=false;
+board.computer = 1 - selMoveMode.selectedIndex;			// 根据用户选择，决定电脑执黑还是执红
+board.restart(STARTUP_FEN[selHandicap.selectedIndex]);	// 使用用户选择的开局局面，初始化棋局
+}};
 // 悔棋
 function retract_click() {
 board.retract();
-}
+};
+
+</script>
+<script>
+  function inmp(text) {
+    var x = document.getElementById("snackbar");
+    x.innerHTML = text
+    x.className = "show";
+    setTimeout(function(){ x.className = x.className.replace("show", ""); }, 2000);
+  }
+  
 </script>
 
-
+<script language="JavaScript" src="jquery-3.6.0.min.js"></script>
 </html>

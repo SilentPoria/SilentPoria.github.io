@@ -1,5 +1,5 @@
 "use strict";
-
+var res = document.getElementById("restart")
 // �Ծֽ��
 var RESULT_UNKNOWN = 0;	// δ֪
 var RESULT_WIN = 1;		// Ӯ
@@ -192,13 +192,12 @@ Board.prototype.response = function() {
   
   setTimeout(
     function() {
-      var x = document.getElementById("AItimer");
       var start = new Date().getTime();
       this_.addMove(board.search.searchMain(LIMIT_DEPTH, 1000), true);
       this_.thinking.style.visibility = "hidden";
       var end = new Date().getTime();
-      x.innerText=MillisecondToDate(end-start);
-      console.log('cost is', `${end - start}ms`);
+      var x=MillisecondToDate(end-start);
+      inmp('AI计算花费用时:'+x);
       
   }, 250); 
 }
