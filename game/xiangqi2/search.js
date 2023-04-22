@@ -534,3 +534,4 @@ Search.prototype.searchMain = function(depth, millis) {
 
   return this.mvResult;
 }
+console.log(hash)
