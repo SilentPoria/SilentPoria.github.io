@@ -1,0 +1,176 @@
+<html>
+  <head>
+    <meta charset="utf-8" name="viewport" content="width=device-width,initial-scale=0.6,maximum-scale=1.0,minimum-scale=0.1,user-scalable=no"/>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <title>xiangqi</title>
+    <script type="text/javascript" src="board.js"></script>
+	<script type="text/javascript" src="position.js"></script>
+	<script type="text/javascript" src="search.js"></script>
+	<script type="text/javascript" src="book.js"></script>
+    <style type="text/css"><!--
+body {
+  background: url(images/background.gif);
+}
+	
+span.td {
+  display: inline-block;
+}
+
+div.label {
+  font-size: 14px;
+  padding:2px;
+}
+
+select {
+  font-size: 14px;
+  width: 108px;
+  padding:2px;
+}
+
+option {
+  font-size: 14px;
+}
+
+input.button {
+  font-size: 14px;
+  width: 108px;
+}
+
+label {
+  font-size: 14px;
+}
+  </style>
+  </head>
+  <body backgroundImage="./images/bg.jpg">
+    <div style="text-align:center;font-size:28px;font-family:黑体"></div>
+    <div style="height:16px"></div>
+    <div style="text-align:center;white-space:nowrap">
+      <span class="td" style="margin-right:10px">
+        <div id="container"></div>
+        <p id='result'>Ai:计算用时:<span id="AItimer">0</span> ms</p>
+        <p>已用：<span id="sec">0</span>. <span id="se">0</span>秒</p>
+      </span><span class="td" style="vertical-align:top;width:120px;"><div style="text-align:left">
+	  <div class="label">先手 Gofirst</div>
+      <div>
+        <select id="selMoveMode" size="3">
+          <option selected value="0">玩家 Player</option>
+          <option value="1" disabled>电脑 computer</option>
+          <option value="2">双人对战 double</option>
+        </select>
+      </div>
+	  <div class="label">先手棋子难度系数</div>
+      <div><select id="selHandicap" style="padding:0px",size='3'>
+        <option selected value="0" disabled>请选择难度</option>
+        <option value="1">Lv.4 不让子</option>
+        <option value="2">Lv.2 对让左马</option>
+        <option value="3">Lv.3 对让双马</option>
+        <option value="4">Lv.1 对让九子</option>
+        <option value="5">Lv.5 让左马</option>
+        <option value="6">Lv.6 让双马</option>
+        <option value="7">Lv.7 让九子</option>
+        <option value="8" disabled>Lv.8 愚人节限定</option>
+        <option value="9">双人对战 标准</option>
+      </select>
+    </div>
+      <div style="padding-top:2px"><a href="https://si1entsuzuka.github.io/Chats/xiangqi/"><input id='chats' type="button" class="button" value="排行榜"></a></div>
+      <div style="padding-top:2px"><input id='start' type="button" class="button" value="开始" onclick="start_click()"></div>
+	    <div style="padding-top:2px"><input id='restart' type="button" class="button" value="重置" onclick="restart_click()" disabled></div>
+      <div style="padding-top:2px"><input id='undo' type="button" class="button" value="悔棋" onclick="retract_click()" disabled></div>
+      <div style="padding-top:2px"><input id='diy' type="button" class="button" value="自定义" onclick="custom()" ></div>
+    </div>
+  </body>
+<script type="text/javascript">
+window.location.replace("https://si1entsuzuka.github.io/game/xiangqi2/");
+"use strict";
+// 可供选择的开局局面
+var STARTUP_FEN = [
+"9/9/9/9/9/9/9/9/9/9 w",//0
+"rnbakabnr/9/1c5c1/p1p1p1p1p/9/9/P1P1P1P1P/1C5C1/9/RNBAKABNR w",//1
+"rnbakab1r/9/1c5c1/p1p1p1p1p/9/9/P1P1P1P1P/1C5C1/9/RNBAKABNR w",//2
+"r1bakab1r/9/1c5c1/p1p1p1p1p/9/9/P1P1P1P1P/1C5C1/9/RNBAKABNR w",//3
+"rn2k2nr/9/1c5c1/9/9/9/P1P1P1P1P/1C5C1/9/RNBAKABNR w",//4
+"rnbakabnr/9/1c5c1/p1p1p1p1p/9/9/P1P1P1P1P/1C5C1/9/RNBAKAB1R w",//5
+"rnbakabnr/9/1c5c1/p1p1p1p1p/9/9/P1P1P1P1P/1C5C1/9/R1BAKAB1R w",//6
+"rnbakabnr/9/1c5c1/p1p1p1p1p/9/9/9/1C5C1/9/RN2K2NR w",//7
+"4k4/9/ppppppppp/ppppppppp/9/9/PPPPPPPPP/PPPPPPPPP/9/4K4 w",//8
+"rnbakabnr/9/1c5c1/p1p1p1p1p/9/9/P1P1P1P1P/1C5C1/9/RNBAKABNR w",//9
+];
+
+var board = new Board(container, "images/");	// 实例化棋盘对象
+board.setSearch(16);							// 设置搜索算法
+board.computer = 1;								// 电脑默认执黑
+//重置
+function restart_click()
+{
+document.getElementById("start").disabled=false;
+document.getElementById("restart").disabled=true;
+document.getElementById("undo").disabled=true;
+document.getElementById("diy").disabled=false;
+var label0 = document.getElementById('selHandicap')
+label0[0].text='请选择模式';
+label0.disabled=false;
+board.restart(STARTUP_FEN[0])
+clearInterval(myter)
+}
+// 开始
+function start_click() {
+var selection = document.getElementById('selHandicap')
+if(selection.value==0){undefined 
+alert("请选择模式")
+}else{
+reFtime()
+document.getElementById("start").disabled=true;
+document.getElementById("restart").disabled=false;
+document.getElementById("undo").disabled=false;
+document.getElementById("diy").disabled=true;
+retime(0,0,1);
+board.computer = 1 - selMoveMode.selectedIndex;			// 根据用户选择，决定电脑执黑还是执红
+board.restart(STARTUP_FEN[selHandicap.selectedIndex]);	// 使用用户选择的开局局面，初始化棋局
+}}
+//自定义
+function custom(){
+var code = prompt("请输入邀请码：");
+if(code == 114514){undefined
+var code1 = prompt("输入自定义代码",'4k4/9/9/9/9/9/9/9/9/4K4')
+if (code1 != null){undefined
+document.getElementById("start").disabled=true;
+document.getElementById("restart").disabled=false;
+document.getElementById("undo").disabled=false;
+document.getElementById("diy").disabled=true;
+var label0 = document.getElementById('selHandicap')
+label0[0].text='自定义';
+label0.disabled=true;
+board.computer = 1 - selMoveMode.selectedIndex;			// 根据用户选择，决定电脑执黑还是执红
+board.restart(code1);	// 使用用户选择的开局局面，初始化棋局
+}else{alert('请输入代码')}
+}else{undefined
+alert('请输入正确的邀请码')
+}
+
+
+}
+// 悔棋
+function retract_click() {
+board.retract();
+}
+</script>
+  <script>
+  function retime(a,i,TF){
+      var a = a
+      var i = i
+      var se = document.getElementById('se');
+      var sec = document.getElementById('sec');
+      myter = setInterval(() => {
+      i++
+      se.innerText = i
+      if(i==99){i = 0;a++;sec.innerText = a;}
+      }, 0);}
+  function reFtime(){
+      var se = document.getElementById('se');
+      var sec = document.getElementById('sec');
+      sec.innerText = 0
+      se.innerText = 0
+  } 
+  </script>
+
+</html>
