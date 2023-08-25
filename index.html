@@ -1,147 +1,51 @@
-<!DOCTYPE HTML>
-<html>
+<!doctype html>
+<html lang="zh" class="no-js">
 <head>
-<title>Home</title>
-<meta charset="utf-8" />
-<meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests"/>
-<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
-<link rel="stylesheet" href="assets/css/main.css" />
-<link rel="stylesheet" href="assets/css/music.css" />
-<link rel="stylesheet" href="assets/css/float.css" />
-<link rel="icon" type="image/png" sizes="144x144" href="./logo/index_logo.png"/>
-<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
-<style type="text/css">
-	 .nono{
-        -webkit-user-select: none;
-        -moz-user-select: none;
-        -o-user-select: none;
-        user-select: none;
-        }
-</style>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Vi</title>
+  <meta name="Description" content="Home Page of iissnan">
+  <meta name="color-scheme" content="dark light">
+  <script>(function(H){H.className=H.className.replace(/\bno-js\b/,'js')})(document.documentElement)</script>
+  <link rel="stylesheet" type="text/css" href="assets/css/main.css"/>
 </head>
-<body class="is-preload" >
 
-<!-- Wrapper -->
-<div id="wrapper">
+<body>
+  <div class="vi">
+    <h1 class="animate-slide-in-down">Vi</h1>
+    <div class="quote">
+      <span class="quote-line quote-line-start animate-slide-in-left"></span>
+      <span class="quote-icon quote-icon-start animate-slide-in-down">
+        <i class="icon icon-quotes-left"></i>
+      </span>
+      <p class="quote-content animate-slide-in-down" id="hitokoto">不积跬步，无以至千里。不积小流，无以成江海。</p>
+      <p class="quote-author animate-slide-in-down" id="sfrom">《劝学篇》—— <em>荀子</em></p>
+      <span class="quote-icon quote-icon-end animate-slide-in-up">
+        <i class="icon icon-quotes-right"></i>
+      </span>
+      <span class="quote-line quote-line-end animate-slide-in-right"></span>
+    </div>
+    <div class="links">
+      <a href="./tools" class="animate-slide-in-down">工具</a>
+      <a href="https://notes.iissnan.com" class="animate-slide-in-down">游戏</a>
+      <a href="https://douban.com/people/iissnan" class="animate-slide-in-down">学习网站集合</a>
+      <a href="https://weibo.com/iissnan" class="animate-slide-in-down">随机播放音乐</a>
+    </div>
+    <div class="location">
+      <span class="location-icon animate-slide-in-up">
+        <i class="icon icon-map-pin"></i>
+      </span>
+      <span class="location-text animate-slide-in-down">XiaMen - China</span>
+    </div>
+    <div class="relocating">
+      Navigating to: <span class="relocate-location"></span>...
+    </div>
+  </div>
 
-	<!-- Header -->
-		<header id="header">
-			<div class="content">
-				<div class="inner">
-					<h1 class="nono">Welcome to Si1lentSuzuka's site!</h1>
-					<div id="appear">
-						<a href="https://hitokoto.cn/">『<span class='nono' id="hitokoto">我又不是因为你们的评价才去当的英雄，是因为我想当才去当的</span>』<br>
-						<a href="https://hitokoto.cn/">from ——「<span id="sfrom">一拳超人</span>」</a>
-					</div>
-				</div>
-			</div>
-			<nav>
-				<ul>
-					<li><a href="#homePage">homePage</a></li>
-					<li><a href="#feedback">feedback</a></li>
-					<li><a href="#about">About</a></li>
-					<li><a href="#blogroll">blogroll</a></li>
-					<li><a href="#music">music</a></li>
-					<!--<li><a href="#elements">Elements</a></li>-->
-				</ul>
-			</nav>
-		</header>
-
-	<!-- Main -->
-		<div id="main">
-
-			<!-- homePage -->
-				<article id="homePage">
-					<h2 class="major" class="nono">homePage</h2>
-					<span class="image main"></span>
-					<p class="nono">学习网址集合：<a href="./study">点击这里</a>></p>
-					<p class="nono">游戏：<a href="./game">点击这里</a>></p>
-					<p class="nono">网页工具：<a href="./tools">点击这里</a>></p>
-					<p></p>
-				</article>
-
-			<!-- feedback -->
-				<article id="feedback" class="nono">
-					<h2 class="major" class="nono">feedback</h2>
-					<p class="nono">反馈邮箱2785609571@qq.com</p>
-					<p class="nono">感谢您的反馈</p>
-					<ul>
-						<li class="nono">qq邮箱：<a href="https://mail.qq.com/">快捷</a></li>
-						<li class="nono">163邮箱：<a href="https://mail.163.com/">快捷</a></li>
-						<li class="nono">微软邮箱：<a href="https://outlook.office.com/mail">快捷</a></li>
-					</ul>
-				</article>
-
-			<!-- About -->
-				<article id="about">
-					<h2 class="major" class="nono">About</h2>
-					<p class="nono">网站管理员：Si1entSuzuka</p>
-					<p class="nono">如果你也想学习html<a href="https://learn.freecodecamp.one/">点击这里</a></p>
-					<p>
-				</article>
-
-
-			<!-- blogroll -->
-				<article id="blogroll">
-					<h2 class="major">blogroll</h2>
-
-					<section>
-						<h3 class="major">技术支持网站</h3>
-						<h4><a href="https://hitokoto.cn/">Hitokoto 一言</a></h4>
-						<h4><a href="https://github.com">Github</a></h4>
-						<h4><a href="https://www.csdn.net/">CSDN</a></h4>
-						<hr/>
-						<h4>友情链接申请</h4>
-						<blockquote>
-							<p>暂无<p>
-						</blockquote>
-					</section>
-				</article>
-
-			<!-- music -->
-				<article id="music">
-					<h2 class="major">music</h2>
-					<audio src="https://api.paugram.com/acgm/?list=1&play=true" id="share" loop="loop" controls='controls' volume="0.5"></audio>
-					<div>
-						<button onclick="rbf()">切歌</button>
-					<div>
-					<br>
-				</article>
-		</div>
-
-	<!-- Footer -->
-		<footer id="footer" class="nono">
-			<p class="copyright">网页处于开发阶段，有bug请及时反馈</a></p>
-		</footer>
-
-</div>
-<!-- BG -->
-<div id="bg"></div>
-<!-- Scripts -->
-<script src="assets/js/jquery.min.js"></script>
-<script src="assets/js/browser.min.js"></script>
-<script src="assets/js/breakpoints.min.js"></script>
-<script src="assets/js/util.js"></script>
-<script src="assets/js/main.js"></script>
-<script src="https://cdn.bootcss.com/bluebird/3.5.1/bluebird.core.min.js"></script>
-<script src="https://cdn.bootcss.com/fetch/2.0.3/fetch.min.js"></script>
-<!--点击特效-->
-<script src="./assets/js/click.js"></script>
-<!--文本动画处理-->
-<script type="text/javascript" src="./assets/js/disappear.js"></script><!--句子消失-->
-<script type="text/javascript" src="./assets/js/appear.js"></script><!--句子出现-->
-<script src="./assets/js/fetchG.js"></script><!--句子出现-->
-<!--切歌-->
-<script type="text/javascript">
- function rbf() {
- 			var audio = document.getElementById('share');
-            audio.src='https://api.paugram.com/acgm/?list=1&play=true'
-            audio.load()
-
-        }
-</script>
-<!--获取文字-->
-<script type="text/javascript">
+  <script src="assets/vendors/jquery-3.3.1.min.js"></script>
+  <!--获取文字-->
+  <script type="text/javascript">
 	fetch('https://v1.hitokoto.cn/?c=b&c=c&c=a&c=d&c=e&c=f&c=a&c=g&c=h&c=i&c=j&c=k')
     .then(function (res){
       return res.json();
@@ -150,36 +54,86 @@
       var hitokoto = document.getElementById('hitokoto');
       var sfrom = document.getElementById('sfrom');
       hitokoto.innerText = data.hitokoto;
-      sfrom.innerText = data.from
-    })
-</script>
-<!--刷新文字-->
-<script type="text/javascript">
-setInterval(() => {
-	disappear()
-	fetchG()
-	appear()
-}, 60000);
-</script>
-<script type="text/javascript">
-var showtime = function () {
-    var nowtime = new Date(),  //获取当前时间
-        endtime = new Date("2022/6/26");  //定义结束时间
-    var lefttime = endtime.getTime() - nowtime.getTime(),  //距离结束时间的毫秒数
-        leftd = Math.floor(lefttime/(1000*60*60*24)),  //计算天数
-        lefth = Math.floor(lefttime/(1000*60*60)%24),  //计算小时数
-        leftm = Math.floor(lefttime/(1000*60)%60),  //计算分钟数
-        lefts = Math.floor(lefttime/1000%60);  //计算秒数
-    return leftd + "天" + lefth + "小时" + leftm + "分钟" + lefts + '秒';  //返回倒计时的字符串
-}
-var div = document.getElementById("showtime");
-setInterval (function () {
-    div.innerHTML = showtime();
-}, 1000);
+      sfrom.innerText = "《"+data.from+"》"
+        })
+  </script>
+  <script>
+    $(function () {
+      var SLIDE_IN_DOWN = { opacity: 1, top: 0 };
+      var SLIDE_IN_UP = { opacity: 1, bottom: 0 };
+      var SLIDE_IN_LEFT = { left: 0 };
+      var SLIDE_IN_RIGHT = { right: 0 };
 
-</script>
-<!--End-->
-<!--debug弹窗-->
+      registerCheatCode();
+      executeAnimations();
 
+      function executeAnimations() {
+        $.when()
+          .then(animateTitle)
+          .then(animateQuote)
+          .then(animateLinks)
+          .then(animateLocation);
+      }
+
+      function animateTitle() {
+        return animate('h1', SLIDE_IN_DOWN);
+      }
+
+      function animateQuote() {
+        return $.when(
+          animate('.quote-line-start', SLIDE_IN_LEFT),
+          animate('.quote-line-end',SLIDE_IN_RIGHT),
+          animate('.quote-icon-start', SLIDE_IN_DOWN),
+          animate('.quote-icon-end', SLIDE_IN_UP)
+        )
+          .then(function () {
+            return animate('.quote-content', SLIDE_IN_DOWN);
+          })
+          .then(function () {
+            return animate('.quote-author', SLIDE_IN_DOWN);
+          });
+      }
+
+      function animateLinks() {
+        var DELAY_STEP = 200;
+        var elements = $('.links a');
+        var concurrent = $.makeArray(elements)
+          .map(function (element, index) {
+            return animate(element, SLIDE_IN_DOWN, index * DELAY_STEP);
+          });
+
+        return $.when.apply($, concurrent);
+      }
+
+      function animateLocation() {
+        return $.when(
+          animate('.location-icon', SLIDE_IN_UP),
+          animate('.location-text', SLIDE_IN_DOWN)
+        );
+      }
+
+      function animate(selector, properties, delay, options) {
+        delay = delay || 0;
+        return $(selector).delay(delay)
+          .animate(properties, options)
+          .promise();
+      }
+
+      function registerCheatCode() {
+        $(document.body).on('keydown', function (event) {
+          var KEY_B = 66;
+
+          if (event.which === KEY_B) {
+            $('.relocate-location').text('Bookmark Page');
+            $('.relocating').css('opacity', 1);
+
+            window.setTimeout(function () {
+              window.location.href = '/bookmarks.html';
+            }, 1000);
+          }
+        });
+      }
+    });
+  </script>
 </body>
 </html>
