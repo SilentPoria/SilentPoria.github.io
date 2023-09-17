@@ -1,285 +1,300 @@
-/* 清除浏览器默认边距，
-使边框和内边距的值包含在元素的width和height内 */
- 
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+  box-sizing: border-box;
 }
- 
-/* 使用flex布局，让内容垂直和水平居中 */
- 
-section {
-    /* 相对定位 */
-    position: relative;
-    overflow: hidden;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    min-height: 100vh;
-    /* linear-gradient() 函数用于创建一个表示两种或多种颜色线性渐变的图片 */
-    background: linear-gradient(to bottom, #f1f4f9, #dff1ff);
+body {
+  font-family: 'Montserrat',sans-serif;
+  background-image: linear-gradient(120deg,#3498db,#8e44ad);;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  margin: -20px 0 50px;
 }
- 
-/* 背景颜色 */
- 
-section .color {
-    /* 绝对定位 */
-    position: absolute;
-    /* 使用filter(滤镜) 属性，给图像设置高斯模糊*/
-    filter: blur(200px);
-}
- 
-/* :nth-child(n) 选择器匹配父元素中的第 n 个子元素 */
- 
-section .color:nth-child(1) {
-    top: -350px;
-    width: 600px;
-    height: 600px;
-    background: #ff359b;
-}
- 
-section .color:nth-child(2) {
-    bottom: -150px;
-    left: 100px;
-    width: 500px;
-    height: 500px;
-    background: #fffd87;
-}
- 
-section .color:nth-child(3) {
-    bottom: 50px;
-    right: 100px;
-    width: 500px;
-    height: 500px;
-    background: #00d2ff;
-}
- 
-.box {
-    position: relative;
-}
- 
-/* 背景圆样式 */
- 
-.box .circle {
-    position: absolute;
-    background: rgba(255, 255, 255, 0.1);
-    /* backdrop-filter属性为一个元素后面区域添加模糊效果 */
-    backdrop-filter: blur(5px);
-    box-shadow: 0 25px 45px rgba(0, 0, 0, 0.1);
-    border: 1px solid rgba(255, 255, 255, 0.5);
-    border-right: 1px solid rgba(255, 255, 255, 0.2);
-    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
-    border-radius: 50%;
-    /* 使用filter(滤镜) 属性，改变颜色。
-    hue-rotate(deg)  给图像应用色相旋转 
-    calc() 函数用于动态计算长度值 
-    var() 函数调用自定义的CSS属性值x*/
-    filter: hue-rotate(calc(var(--x) * 70deg));
-    /* 调用动画animate，需要10s完成动画，
-    linear表示动画从头到尾的速度是相同的，
-    infinite指定动画应该循环播放无限次*/
-    animation: animate 10s linear infinite;
-    /* 动态计算动画延迟几秒播放 */
-    animation-delay: calc(var(--x) * -1s);
-}
- 
-/* 背景圆动画 */
- 
-@keyframes animate {
-    0%, 100%, {
-        transform:translateY(-50px);
-    }
-    50% {
-        transform:translateY(50px);
-    }
-}
- 
-.box .circle:nth-child(1) {
-    top: -50px;
-    right: -240px;
-    width: 100px;
-    height: 100px;
-}
- 
-.box .circle:nth-child(2) {
-    top: 150px;
-    left: -100px;
-    width: 120px;
-    height: 120px;
-    z-index: 2;
-}
- 
-.box .circle:nth-child(3) {
-    bottom: 50px;
-    right: 300px;
-    width: 80px;
-    height: 80px;
-    z-index: 2;
-}
- 
-.box .circle:nth-child(4) {
-    top: 150px;
-    left: 100px;
-    width: 60px;
-    height: 60px;
-}
- 
-.box .circle:nth-child(5) {
-    top: -80px;
-    left: 140px;
-    width: 60px;
-    height: 60px;
-}
- 
 
-.login-box {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    width: 400px;
-    padding: 40px;
-    transform: translate(-50%, -50%);
-    background: rgba(24, 20, 20, 0.987);
-    box-sizing: border-box;
-    box-shadow: 0 15px 25px rgba(0,0,0,.6);
-    border-radius: 10px;
-  }
-  
-  .login-box .user-box {
-    position: relative;
-  }
-  
-  .login-box .user-box input {
-    width: 100%;
-    padding: 10px 0;
-    font-size: 16px;
-    color: #fff;
-    margin-bottom: 30px;
-    border: none;
-    border-bottom: 1px solid #fff;
-    outline: none;
-    background: transparent;
-  }
-  .login-box .user-box select {
-    width: 100%;
-    padding: 10px 0;
-    font-size: 16px;
-    color: #fff;
-    margin-bottom: 30px;
-    border: none;
-    border-bottom: 1px solid #fff;
-    outline: none;
-    background: transparent;
-  }
-  
-  .login-box .user-box label {
-    position: absolute;
-    top: 0;
-    left: 0;
-    padding: 10px 0;
-    font-size: 16px;
-    color: #fff;
-    pointer-events: none;
-    transition: .5s;
-  }
-  
-  .login-box .user-box input:focus ~ label,
-  .login-box .user-box input:valid ~ label {
-    top: -20px;
-    left: 0;
-    color: #bdb8b8;
-    font-size: 12px;
-  }
+h1 {
+  font-weight: bold;
+  margin: 0;
+}
+p {
+  font-size: 14px;
+  line-height: 20px;
+  letter-spacing: .5px;
+  margin: 20px 0 30px;
+}
+span {
+  font-size: 12px;
+}
+a {
+  color: #333;
+  font-size: 14px;
+  text-decoration: none;
+  margin: 15px 0;
+}
+.container {
+  background: #fff;
+  border-radius: 10px;
+  box-shadow: 0 14px 28px rgba(0, 0, 0, .25), 0 10px 10px rgba(0, 0, 0, .22);
+  position: relative;
+  overflow: hidden;
+  width: 768px;
+  max-width: 100%;
+  min-height: 480px;   
 
-  
-  .login-box form a {
-    position: relative;
-    display: inline-block;
-    padding: 10px 20px;
-    color: #ffffff;
-    font-size: 16px;
-    text-decoration: none;
-    text-transform: uppercase;
-    overflow: hidden;
-    transition: .5s;
-    margin-top: 40px;
-    letter-spacing: 4px
-  }
-  
-  .login-box a:hover {
-    background: #03f40f;
-    color: #fff;
-    border-radius: 5px;
-    box-shadow: 0 0 5px #03f40f,
-                0 0 25px #03f40f,
-                0 0 50px #03f40f,
-                0 0 100px #03f40f;
-  }
-  
-  .login-box a span {
-    position: absolute;
-    display: block;
-  }
-  
-  @keyframes btn-anim1 {
-    0% {
-      left: -100%;
-    }
-  
-    50%,100% {
-      left: 100%;
-    }
-  }
-  
-  .login-box a span:nth-child(1) {
-    bottom: 2px;
-    left: -100%;
-    width: 100%;
-    height: 2px;
-    background: linear-gradient(90deg, transparent, #03f40f);
-    animation: btn-anim1 2s linear infinite;
-  }
+}
 
+.form-container form {
+  background: #fff;
+  display: flex;
+  flex-direction: column;
+  padding: 0 50px;
+  height: 100%;
+  justify-content: center;
+  text-align: center;
+}
+.social-container {
+  margin: 20px 0;
+}
 
-  #snackbar {
-    visibility: hidden;
-    min-width: 250px;
-    margin-left: -125px;
-    background-color: #333;
-    color: #fff;
-    text-align: center;
-    border-radius: 2px;
-    padding: 16px;
-    position: fixed;
-    z-index: 1;
-    left: 50%;
-    bottom: 30px;
-    font-size: 17px;
-  }
+.social-container a {
+  border: 1px solid #ddd;
+  border-radius: 50%;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0 5px;
+  height: 40px;
+  width: 40px;
+}
+
+.social-container a:hover {
+  background-color: #eee;
+
+}
+
+.txtb {
+  border-bottom: 2px solid #adadad;
+  position: relative;
+  margin: 10px 0;
+}
+
+.txtb input {
+  font-size: 15px;
+  color: #333;
+  border: none;
+  width: 100%;
+  outline: none;
+  background: none;
+  padding: 0 3px;
+  height: 35px;
+}
+
+.txtb span::before {
+  content: attr(data-placeholder);
+  position: absolute;
+  top: 50%;
+  left: 5px;
+  color: #adadad;
+  transform: translateY(-50%);
+  transition: .5s;
+}
+.txtb span::after {
+  content: '';
+  position: absolute;
+  left: 0%;
+  top: 100%;
+  width: 0%;
+  height: 2px;
+  background-image: linear-gradient(120deg,#3498db,#8e44ad);
+  transition: .5s;
+}
+
+.special span{
+  content: attr(data-placeholder);
+  position: absolute;
+  top: 50%;
+  left: 5px;
+  color: #adadad;
+  transform: translateY(-50%);
+  transition: .5s;
+}
+
+.focus + span::before {
+  top: -5px;
+}
+
+.focus + span::after {
+  width: 100%;
+}
+
+button {
+  border-radius: 20px;
+  border: 1px solid #ff4b2b;
+  background: #ff4b2b;
+  color: #fff;
+  font-size: 12px;
+  font-weight: bold;
+  padding: 12px 45px;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  transition: transform 80ms ease-in;
+  cursor: pointer;
+}
+
+button:active {
+  transform: scale(.95);
+}
+
+button:focus {
+  outline: none;
+}
+
+button.ghost {
+  background: transparent;
+  border-color: #fff;
+}
+
+.form-container {
+  position: absolute;
+  top: 0;
+  height: 100%;
+  transition: all .6s ease-in-out;
+}
+
+.form-container button {
+  background: linear-gradient(120deg, #3498db, #8e44ad);
+  border: none;
+  background-size: 200%;
+  color: #fff;
+  transition: .5s;
+}
+
+.form-container button:hover {
+  background-position: right;
+}
+
+.sign-in-container {
+  left: 0;
+  width: 50%;
+  z-index: 2;
+}
+.sign-in-container form a {
+  position: relative;
+  left: 100px;
+}
+.sign-up-container {
+  left: 0;
+  width: 50%;
+  z-index: 1;
+  opacity: 0;
+}
+.sign-up-container button {
+  margin-top: 20px;
+}
+.overlay-container {
+  position:absolute;
+  top: 0;
+  left: 50%;
+  width: 50%;
+  height: 100%;
+  overflow: hidden;
+  transition: transform .6s ease-in-out;
+  z-index: 100;
+}
+.overlay {
+  background-image: linear-gradient(120deg,#3498db,#8e44ad);
+  color: #fff;
+  position: relative;
+  left: -100%;
+  height: 100%;
+  width: 200%;
+  transform: translateY(0);
+  transition: transform .6s ease-in-out;
+}
+.overlay-panel {
+  position: absolute;
+  top: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 0 40px;
+  height: 100%;
+  width: 50%;
+  text-align: center;
+  transform: translateY(0);
+  transition: transform .6s ease-in-out;
+}
+.overlay-right {
+  right: 0;
+  transform: translateY(0);
   
-  #snackbar.show {
-    visibility: visible;
-    -webkit-animation: fadein 0.5s, fadeout 0.5s 2.0s;
-    animation: fadein 0.5s, fadeout 0.5s 2.0s;
-  }
-  
-  @-webkit-keyframes fadein {
-    from {bottom: 0; opacity: 0;} 
-    to {bottom: 30px; opacity: 1;}
-  }
-  
-  @keyframes fadein {
-    from {bottom: 0; opacity: 0;}
-    to {bottom: 30px; opacity: 1;}
-  }
-  
-  @-webkit-keyframes fadeout {
-    from {bottom: 30px; opacity: 1;} 
-    to {bottom: 0; opacity: 0;}
-  }
-  
-  @keyframes fadeout {
-    from {bottom: 30px; opacity: 1;}
-    to {bottom: 0; opacity: 0;}
-  }
+}
+
+.overlay-left {
+  transform: translateY(-20%);
+}
+
+.container.right-panel-active .sign-in-container {
+  transform: translateY(100%);
+}
+
+.container.container.right-panel-active .overlay-container {
+  transform: translateX(-100%);
+}
+.container.right-panel-active .sign-up-container {
+  transform: translateX(100%);
+  opacity: 1;
+  z-index: 5;
+}
+.container.container.right-panel-active .overlay {
+  transform: translateX(50%);
+}
+.container.container.right-panel-active .overlay-left {
+  transform: translateY(0);
+}
+.container.container.right-panel-active .overlay-right {
+  transform: translateY(20%);
+}
+
+#snackbar {
+  visibility: hidden;
+  min-width: 250px;
+  margin-left: -125px;
+  background-color: #333;
+  color: #fff;
+  text-align: center;
+  border-radius: 2px;
+  padding: 16px;
+  position: fixed;
+  z-index: 1;
+  left: 50%;
+  bottom: 30px;
+  font-size: 17px;
+}
+
+#snackbar.show {
+  visibility: visible;
+  -webkit-animation: fadein 0.5s, fadeout 0.5s 2.0s;
+  animation: fadein 0.5s, fadeout 0.5s 2.0s;
+}
+
+@-webkit-keyframes fadein {
+  from {bottom: 0; opacity: 0;} 
+  to {bottom: 30px; opacity: 1;}
+}
+
+@keyframes fadein {
+  from {bottom: 0; opacity: 0;}
+  to {bottom: 30px; opacity: 1;}
+}
+
+@-webkit-keyframes fadeout {
+  from {bottom: 30px; opacity: 1;} 
+  to {bottom: 0; opacity: 0;}
+}
+
+@keyframes fadeout {
+  from {bottom: 30px; opacity: 1;}
+  to {bottom: 0; opacity: 0;}
+}

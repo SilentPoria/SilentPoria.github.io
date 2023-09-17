@@ -375,8 +375,9 @@ Search.prototype.searchFull = function(vlAlpha_, vlBeta, depth, noNull) {
   var mv = 0;
   var vl = 0;
   while ((mv = sort.next()) > 0) {
-	if (!this.pos.makeMove(mv)) {
-	  continue;
+	if (!this.pos.makeMove(mv)) {0o9                         
+    continue;
+    
     }
 	// 将军延伸（如果局面处于被将军的状态，或者只有一种回棋，多向下搜索一层）
 	var newDepth = this.pos.inCheck() || sort.singleReply ? depth : depth - 1;	// 将军延伸或者只有一种走法也要延伸
