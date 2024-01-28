@@ -1,154 +1,38 @@
-<html>
-  <head>
-    <meta charset="utf-8" name="viewport" content="width=device-width,initial-scale=0.6,maximum-scale=1.0,minimum-scale=0.1,user-scalable=no"/>
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-    <title>象棋</title>
-    <script type="text/javascript" src="board.js"></script>
-	  <script type="text/javascript" src="position.js"></script>
-	  <script type="text/javascript" src="search.js"></script>
-	  <script type="text/javascript" src="book.js"></script>
-    <link rel="stylesheet" href="./css.css">
-    <style type="text/css">
-      .start {
-      border: 2px solid #e8e8e8;
-      padding: 15px;
-      border-radius: 10px;
-      background-color: #212121;
-      font-size: small;
-      font-weight: bold;
-      text-align: center;
-      }
 
-      .input:focus {
-      outline-color: white;
-      background-color: #212121;
-      color: #e8e8e8;
-      box-shadow: 5px 5px #888888;
-      }
+<!doctype html>
+<html lang="">
+    <head>
+        <meta charset="utf-8"> 
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width,initial-scale=1">
+        <title>皮卡鱼象棋在线</title>
+        <meta name="description" content="皮卡鱼象棋在线是您的象棋AI在线分析专家。无需下载，完全免费，即刻使用我们的先进象棋引擎进行拆棋打谱分析，与AI对弈，提升您的棋力。体验与象棋旋风、小虫象棋、象棋名手相媲美的分析能力。">
+        <meta name="keywords" content="中国象棋, 象棋AI, 象棋分析, 在线象棋, 皮卡鱼象棋, 无需下载, 象棋引擎, 象棋旋风, 小虫象棋, 象棋名手, 对弈, 提升棋力">
+        <script async src="https://www.googletagmanager.com/gtag/js?id=G-5HCDHN4N79"></script>
+        <script>window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+    gtag('js', new Date());
 
-      body {
-        background: url(images/background.gif);
-      }
-        
-      span.td {
-        display: inline-block;
-      }
+    gtag('config', 'G-5HCDHN4N79');</script><script>
+        if (!window.location.host.includes("localhost")) {
+        var _hmt = _hmt || [];
+        (function () {
+            var hm = document.createElement("script");
+            //hm.src = "https://hm.baidu.com/hm.js?19a00d4cb2bd656e397d084c9e281945";
+            var s = document.getElementsByTagName("script")[0];
+            s.parentNode.insertBefore(hm, s);
+        })();
+    }</script>
+    <script defer="defer" src="js/chunk.js"></script>
+    <script defer="defer" src="js/app.js"></script>
+    <link href="css/chunk.css" rel="stylesheet">
+    <link href="css/app.css" rel="stylesheet">
+    </head>
+    <body>
+        <noscript>
+            <strong>皮卡鱼象棋在线需要使用JavaScript</strong>
+        </noscript>
+        <div id="app"></div>
 
-      div.label {
-        font-size: 14px;
-        padding:2px;
-      }
-
-      select {
-        font-size: 14px;
-        width: 108px;
-        padding:2px;
-      }
-
-      option {
-        font-size: 14px;
-      }
-
-      input.button {
-        font-size: 14px;
-        width: 108px;
-      }
-
-      label {
-        font-size: 14px;
-      }
-  </style>
-  </head>
-  <body backgroundImage="images/bg.jpg">
-    <div style="text-align:center;font-size:28px;font-family:黑体">象棋</div>
-    <div style="height:16px"></div>
-    <div id="main" style="text-align:center;white-space:nowrap">
-      <span class="td" style="margin-right:10px">
-        <div id="container"></div>
-      </span><span class="td" style="vertical-align:top;width:120px;">
-	    <div class="label">模式</div>
-      <div>
-        <select id="selMoveMode" size="3">
-          <option selected value="0">玩家先手(人机)</option>
-          <option value="1">电脑先手(人机)</option>
-          <option value="2">双人</option>
-        </select>
-      </div>
-	    <div class="label">棋盘</div>
-      <div>
-        <select id="selHandicap" style="padding:0px" size='3'>
-          <option selected value="0" disabled>请选择棋盘</option>
-          <option value="1">标准棋盘</option>
-          <option value="2">黑让左马</option>
-          <option value="3">黑让双马</option>
-          <option value="4">黑让九子</option>
-          <option value="5">红让左马</option>
-          <option value="6">红让双马</option>
-          <option value="7">红让九子</option>
-        </select>
-      </div>
-      <div style="padding-top:2px"><input id='more' type="button" class="button" value="更多设置" onclick="inmp('该功能正在开发中')" ></div>
-      <div style="padding-top:2px"><input id='start' type="button" class="button" value="开始" onclick="start_click()"></div>
-      <div style="padding-top:2px"><input id='restart' type="button" class="button" value="重置" onclick="restart_click()" disabled></div>
-      <div style="padding-top:2px"><input id='undo' type="button" class="button" value="悔棋" onclick="retract_click()" disabled></div>
-    </div>
-    <div id="snackbar" class="msg">Some text some message..</div>
-    <div id="snackbar" class="Ai">Some text some message..</div>
-  </body>
-<script type="text/javascript">
-"use strict";
-
-// 可供选择的开局局面
-var STARTUP_FEN = [
-"9/9/9/9/9/9/9/9/9/9 w",//0
-"rnbakabnr/9/1c5c1/p1p1p1p1p/9/9/P1P1P1P1P/1C5C1/9/RNBAKABNR w",//1
-"rnbakab1r/9/1c5c1/p1p1p1p1p/9/9/P1P1P1P1P/1C5C1/9/RNBAKABNR w",//2
-"r1bakab1r/9/1c5c1/p1p1p1p1p/9/9/P1P1P1P1P/1C5C1/9/RNBAKABNR w",//3
-"rn2k2nr/9/1c5c1/9/9/9/P1P1P1P1P/1C5C1/9/RNBAKABNR w",//4
-"rnbakabnr/9/1c5c1/p1p1p1p1p/9/9/P1P1P1P1P/1C5C1/9/RNBAKAB1R w",//5
-"rnbakabnr/9/1c5c1/p1p1p1p1p/9/9/P1P1P1P1P/1C5C1/9/R1BAKAB1R w",//6
-"rnbakabnr/9/1c5c1/p1p1p1p1p/9/9/9/1C5C1/9/RN2K2NR w",//7
-];
-
-var board = new Board(container, "images/");	// 实例化棋盘对象
-board.setSearch(16);							// 设置搜索算法
-board.computer = 1;								// 电脑默认执黑
-//重置
-function restart_click()
-{
-document.getElementById("start").disabled=false;
-document.getElementById("restart").disabled=true;
-document.getElementById("undo").disabled=true;
-var label0 = document.getElementById('selHandicap');
-board.computer = -1;
-board.restart(STARTUP_FEN[0])};
-// 开始
-function start_click() {
-var selection = document.getElementById('selHandicap')
-if(selection.value==0){undefined 
-inmp("请选择模式")
-}else{
-document.getElementById("start").disabled=true;
-document.getElementById("restart").disabled=false;
-document.getElementById("undo").disabled=false;
-board.computer = 1 - selMoveMode.selectedIndex;			// 根据用户选择，决定电脑执黑还是执红
-board.restart(STARTUP_FEN[selHandicap.selectedIndex]);	// 使用用户选择的开局局面，初始化棋局
-}};
-// 悔棋
-function retract_click() {
-board.retract();
-};
-
-</script>
-<script>
-  function inmp(text) {
-    var x = document.getElementById("snackbar");
-    x.innerHTML = text
-    x.className = "show";
-    setTimeout(function(){ x.className = x.className.replace("show", ""); }, 2000);
-  }
-  
-</script>
-
-<script language="JavaScript" src="jquery-3.6.0.min.js"></script>
+    </body>
 </html>

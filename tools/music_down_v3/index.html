@@ -1,0 +1,106 @@
+<!--
+ * @Author: error: error: git config user.name & please set dead value or install git && error: git config user.email & please set dead value or install git & please set dead value or install git
+ * @Date: 2023-12-23 22:34:53
+ * @LastEditors: error: error: git config user.name & please set dead value or install git && error: git config user.email & please set dead value or install git & please set dead value or install git
+ * @LastEditTime: 2024-01-28 11:14:23
+ * @FilePath: \SilentPoria.github.io\tools\music_down_v3\index.html
+ * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
+-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>网易云音乐 解析/下载站 v3.0.1</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js" charset="utf-8"></script>
+</head>
+<body> 
+<div class="container" id="main-box">
+        <div class="form-container sign-up-container">
+            <form>
+                <h1>音乐信息</h1>
+                <div class="txtb">
+                    <input id='music_id' type="text" value="加载ing" class="focus">
+                    <span data-placeholder="音乐id"></span>
+                </div> 
+                <div class="txtb">
+                    <input id='musicName' type="text" value="加载ing" class="focus">
+                    <span data-placeholder="音乐名称"></span>
+                </div>         
+                <div class="txtb">
+                    <input id='composer' type="text" value="加载ing" class="focus">
+                    <span data-placeholder="作曲家"></span>
+                </div>                   
+                <button type='button' id="download" class='loading' disabled="Ture">请稍后</button>
+            </form>
+        </div>
+        <div class="form-container sign-in-container">
+            <form>
+                <h1>链接解析</h1>
+                <div class="txtb">
+                    <input type="text" id="url">
+                    <span data-placeholder="链接-url" ></span>
+                </div>
+                <button class='input-button' id='start' type="button" onclick="music_id_get()">解析</button>
+            </form>
+        </div>
+        <div class="overlay-container">
+                <div class="overlay">
+                    <div class="overlay-panel overlay-left">
+                        <h1>链接解析</h1>
+                        <p></p>
+                        <button class="ghost" id="reback" >返回</button>
+                    </div>
+                    <div class="overlay-panel overlay-right">
+                        <h1>不知道音乐链接？</h1>
+                        <p></p>
+                        <button class="ghost" id="help" >帮助</button>
+                    </div>
+                </div>
+            
+        </div>
+        <div id="snackbar" class="">/我是提示框0.0/</div>
+    </div>
+</body>
+<script>
+    $("#help").click(function(){
+        window.open("https://de8632.bk-free02.com/e133/bc75")
+        
+    })
+
+    $("#reback").click(function(){
+        $("#main-box").removeClass('right-panel-active')
+        var url = document.getElementById('musicName');
+        var show_name = document.getElementById('url');
+        var show_composer = document.getElementById('composer');
+        var show_id = document.getElementById('music_id');
+        show_name.innerHTML = "加载ing"
+        show_composer.innerHTML = "加载ing"
+        show_id.innerHTML = ""
+        url.value = ""
+        myFunction('返回')
+    })
+    
+    $("#download").click(function(){
+        var id = document.getElementById('music_id').value
+        myFunction('正在下载,请不要过高频率点击')
+        getRequest(id)
+    })
+
+    $(".txtb input").on("focus",function(){
+        $(this).addClass("focus")
+    })
+
+    $(".txtb input").on("blur",function(){
+        if($(this).val() == '')
+        $(this).removeClass("focus")
+    })
+
+</script>
+<script src="./jquery-3.6.0.min.js"></script>
+<script src="./index.js"></script>
+<script>
+</script>
+</html>
