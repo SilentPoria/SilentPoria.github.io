@@ -1,0 +1,99 @@
+body {
+    flex: none;
+    flex-direction: column;
+    margin: 0;
+    background-color: #f4f4f4;
+    font-family: Arial, sans-serif;
+    background-image: url('bg.png');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-position: center center;
+    background-color: #ffffff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh; /* 设置body的高度为视口高度 */
+}
+h1 {
+    display: block;
+    text-align: center; /* 使标题居中显示 */
+    margin-top: 10%;
+    margin-bottom: 100px;
+    backdrop-filter: blur(20px);
+    -webkit-text-stroke: 1px rgb(253, 247, 247);
+    color: black;
+}
+
+.app {
+    display: block;
+    width: calc(60%);
+    height: calc(40%);
+    background: white;
+    margin-top: 0;
+    padding: 20px;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    border-radius: 2em;
+    backdrop-filter: blur(20px);
+    background-color: rgba(255, 255, 255, 0.5);
+}
+
+.main input[type="text"] {
+    width: calc(100%); /* 输入框宽度为.app宽度减去按钮宽度 */
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    margin-right: 10px;
+    margin-bottom: 10px;
+    margin-top: 10px;
+}
+
+.main button {
+    padding: 10px 20px;
+    border: none;
+    background-color: #0071e3;
+    color: rgb(87, 84, 84);
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.app .main input {
+    height: 45px;
+    border: 1.8px solid #aaa;
+    background-color: transparent;
+    outline: none;
+    padding: 0 10px;
+    color: #555;
+    letter-spacing: .1em;
+    border-radius: 4px 0 0 4px;
+}
+
+.app .main input::placeholder {
+    color: #aaa;
+}
+
+.app .main button {
+    flex-direction: row;
+    width: 100px;
+    height: 45px;
+    border: 1.8px solid #aaa;
+    cursor: pointer;
+    background-color: transparent;
+    transition: background-color .2s;
+    border-radius: 0 4px 4px 0;
+    text-align: center;
+    font-size: 10px;
+    color: #555;
+    right: 5%;
+}
+
+.app .info {
+    width: 100%; /* 设置为100%，以适应.app的宽度 */
+    text-align: center; /* 使信息文本居中显示 */
+}
+
+.app .info p {
+    font-size: 12px;
+    color: #000000;
+    
+}
