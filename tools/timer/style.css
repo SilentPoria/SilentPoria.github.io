@@ -1,0 +1,74 @@
+    /* 全屏背景渐变效果 */
+    body {
+        background: url('https://bing.img.run/rand.php');
+        background-repeat: no-repeat;
+        margin: 0;
+        padding: 0;
+        height: 100vh;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        font-family: Arial, sans-serif;
+        overflow: hidden;
+      }
+      #main{
+        width: calc(60%);
+        height: calc(40%);
+        display: flex;
+        background: white;
+        margin-top: 0;
+        padding: 20px;
+        box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        border-radius: 2em;
+        backdrop-filter: blur(20px);
+        background-color: rgba(255, 255, 255, 0.5);
+        animation: fade-in 2s forwards;
+        font-family: "STXihei";
+    }
+      
+      #countdown-label {
+        font-size: 96px;
+        animation: fade-in 2s forwards;
+        -webkit-text-stroke:1px rgb(255, 255, 255);
+      }
+      
+      #timer {
+        font-size: 312px;
+        animation: fade-in 2s forwards;
+        -webkit-text-stroke:2px rgb(255, 255, 255);
+      }
+      
+      #message {
+        padding-right: 12px;
+        margin-right: 12px;
+        font-size: 40px;
+        opacity: 0;
+        animation: fade-in 2s forwards;
+        -webkit-text-stroke:0.5px rgb(255, 255, 255);
+      }
+      
+      @keyframes fade-in {
+        0% {
+          opacity: 0;
+        }
+        100% {
+          opacity: 1;
+        }
+      }
+      
+      
+      #calculate-btn {
+        margin-top: 10px;
+        padding: 5px 10px;
+      }
+  
+      #snow-container {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        pointer-events: none;
+        z-index: -1;
+      }

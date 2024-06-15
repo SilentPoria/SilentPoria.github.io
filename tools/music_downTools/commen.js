@@ -51,7 +51,7 @@ const downloadMusic = (musicUrl,name='untitle',composer='unkown') => {
 document.addEventListener('DOMContentLoaded', () => {
     console.log('触发下载');
     const downloadButton = document.querySelector('.main button');
-    downloadButton.addEventListener('click',() => {
+    downloadButton.addEventListener('click',async() => {
         const musicLink = document.querySelector('.main input[type="text"]').value;
         if (musicLink) {
             const musicLinkType = detectMusicLinkType(musicLink);
@@ -61,9 +61,9 @@ document.addEventListener('DOMContentLoaded', () => {
                 return;
             }else if (musicLinkType === 'netease') {
                     try {
-                        var musicId =  neteaseMusicIdGet(musicLink);
+                        var musicId =  await neteaseMusicIdGet(musicLink);
                         var musicTrueUrl = getNeteaseMusicUrl(musicId);
-                        var musicInfo =  neteaseMusicInfo(musicId); // 使用await等待Promise解决
+                        var musicInfo =  await neteaseMusicInfo(musicId); // 使用await等待Promise解决
                         var musicName = musicInfo['songs'];
                         var musicSinger = musicInfo['sings'];
                         prompt('解析成功' + (musicName + ' - ' + musicSinger), 'alert-success');
