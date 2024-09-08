@@ -1,0 +1,31 @@
+<!--
+ * @Author: SilentPoria 99938821+SilentPoria@users.noreply.github.com
+ * @Date: 2024-07-13 13:16:55
+ * @LastEditors: SilentPoria 99938821+SilentPoria@users.noreply.github.com
+ * @LastEditTime: 2024-07-13 13:27:27
+ * @FilePath: \SilentPoria.github.io\tools\docmentdown\index.html
+ * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
+-->
+
+<html>
+<head>
+  <title>主页面</title>
+  <script>
+    function loadSubPage() {
+      var xhr = new XMLHttpRequest();
+      xhr.open('GET', 'https://www.doc88.com/p-6751329230436.html', true);
+      xhr.onreadystatechange = function() {
+        if (xhr.readyState === 4 && xhr.status === 200) {
+          var subPageContent = xhr.responseText;
+          document.getElementById('subPageContainer').innerHTML = subPageContent;
+        }
+      };
+      xhr.send();
+    }
+  </script>
+</head>
+<body onload="loadSubPage()">
+  <h1>主页面</h1>
+  <div id="subPageContainer"></div>
+</body>
+</html>

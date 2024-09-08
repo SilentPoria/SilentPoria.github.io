@@ -1,0 +1,105 @@
+<!--
+ * @Author: error: error: git config user.name & please set dead value or install git && error: git config user.email & please set dead value or install git & please set dead value or install git
+ * @Date: 2023-12-23 22:34:53
+ * @LastEditors: error: error: git config user.name & please set dead value or install git && error: git config user.email & please set dead value or install git & please set dead value or install git
+ * @LastEditTime: 2023-12-29 20:53:32
+ * @FilePath: \work_space\SilentPoria.github.io\tools\music_down_new_test\index.html
+ * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
+-->
+<!-- 您提供的代码是一个 HTML 文档，用于创建音乐下载应用程序的网页。它包括创建用户界面所需的 HTML 结构、CSS 样式和 JavaScript 代码，用户可以在其中输入音乐 URL 并下载相应的
+MP3 文件。 -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Music_download</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js" charset="utf-8"></script>
+</head>
+<body>
+<div class="container" id="login-box">
+
+
+    <div class="form-container sign-up-container">
+        <form>
+            <h1>设置</h1>
+            <div class="txtb">
+              <input id="type" type="text" list="typelist" placeholder="链接来源(正在开发,目前仅支持网易云)" disabled>
+              <datalist id="typelist">
+              　　<option value="网易云">网易云</option>
+              　　<option disabled>QQ音乐</option>
+              </datalist>  
+              <span id="special" data-placeholder="" ></span>
+              <meting-js server="netease"type="song"id="2083442920"></meting-js>
+            </div>                  
+        </form>
+    </div>
+    <div class="form-container sign-in-container">
+        <form action="#">
+            <h1>音乐下载</h1>
+            <div class="txtb">
+                <input type="text" id="url">
+                <span data-placeholder="Url" ></span>
+            </div>
+            <div class="txtb">
+                <input id='musicName' type="text" value="music" class="focus">
+                <span data-placeholder="音乐名称(默认music)"></span>
+            </div>
+            <button href="javascript:void(0)" onclick="selection()">OK</button>
+        </form>
+    </div>
+
+    <div class="overlay-container">
+            <div class="overlay">
+                <div class="overlay-panel overlay-left">
+                    <h1>音乐下载</h1>
+                    <p></p>
+                    <button class="ghost" id="signIn" >返回</button>
+                </div>
+                <div class="overlay-panel overlay-right">
+                    <h1>不知道音乐链接？</h1>
+                    <p>打开网易云>分享歌曲>复制链接</p>
+                    <button class="ghost" id="signUp" >设置</button>
+                    
+                </div>
+            </div>
+        
+    </div>
+    <div id="snackbar" class="">Some tip</div>
+  </div>
+</body>
+<script>
+    $("#signUp").click(function(){
+        $("#login-box").addClass('right-panel-active')
+    })
+
+    $("#signIn").click(function(){
+        $("#login-box").removeClass('right-panel-active')
+    })
+
+    $(".txtb input").on("focus",function(){
+        $(this).addClass("focus")
+    })
+
+    $(".txtb input").on("blur",function(){
+        if($(this).val() == '')
+        $(this).removeClass("focus")
+    })
+
+</script>
+<!--  APlayer -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.css">
+<script src="./APlayer.min.js"></script>
+<!--  MetingJS -->
+<script src="./Meting.min.js"></script>
+<script src="./jquery-3.6.0.min.js"></script>
+<script>
+
+
+
+get_302_Status();
+
+</script>
+</html>
