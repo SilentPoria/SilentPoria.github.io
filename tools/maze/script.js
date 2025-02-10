@@ -10,106 +10,6 @@ let end = [SIZE - 2, SIZE - 2];
 
 
 
-function generateMazeWilson() {
-    const rows = SIZE;
-    const cols = SIZE;
-    const grid = new Array(rows).fill().map(() => new Array(cols).fill(1));
-    const unvisited = [];
-
-    // 初始化未访问的单元格列表
-    for (let y = 0; y < rows; y++) {
-        for (let x = 0; x < cols; x++) {
-            unvisited.push([x, y]);
-        }
-    }
-
-    // 随机选择一个起点并标记为已访问
-    const start = unvisited.splice(Math.floor(Math.random() * unvisited.length), 1)[0];
-    grid[start[1]][start[0]] = 0;
-
-    function randomWalk(x, y) {
-        const path = [[x, y]];
-        while (unvisited.includes([x, y])) {
-            const directions = [[0, 1], [1, 0], [0, -1], [-1, 0]];
-            const randomDirection = directions[Math.floor(Math.random() * directions.length)];
-            const nx = x + randomDirection[0];
-            const ny = y + randomDirection[1];
-            if (nx >= 0 && nx < cols && ny >= 0 && ny < rows) {
-                x = nx;
-                y = ny;
-                path.push([x, y]);
-            }
-        }
-        return path;
-    }
-
-    while (unvisited.length > 0) {
-        const randomCell = unvisited[Math.floor(Math.random() * unvisited.length)];
-        const path = randomWalk(randomCell[0], randomCell[1]);
-        for (const [x, y] of path) {
-            if (unvisited.includes([x, y])) {
-                grid[y][x] = 0;
-                unvisited.splice(unvisited.indexOf([x, y]), 1);
-            }
-        }
-    }
-
-    return grid;
-};
-
-function generateMazeRecursiveDivision() {
-    const rows = SIZE;
-    const cols = SIZE;
-    const grid = new Array(rows).fill().map(() => new Array(cols).fill(1));
-
-    function divide(x1, y1, x2, y2) {
-        if (x2 - x1 < 2 || y2 - y1 < 2) {
-            return;
-        }
-
-        // 随机选择是水平分割还是垂直分割
-        const isHorizontal = Math.random() < 0.5;
-
-        if (isHorizontal) {
-            const y = Math.floor((y1 + y2) / 2);
-            const passageX = Math.floor(Math.random() * (x2 - x1)) + x1;
-            for (let x = x1; x < x2; x++) {
-                if (x !== passageX) {
-                    grid[y][x] = 1;
-                }
-            }
-            divide(x1, y1, x2, y);
-            divide(x1, y + 1, x2, y2);
-        } else {
-            const x = Math.floor((x1 + x2) / 2);
-            const passageY = Math.floor(Math.random() * (y2 - y1)) + y1;
-            for (let y = y1; y < y2; y++) {
-                if (y !== passageY) {
-                    grid[y][x] = 1;
-                }
-            }
-            divide(x1, y1, x, y2);
-            divide(x + 1, y1, x2, y2);
-        }
-    }
-
-    // 初始化边界
-    for (let x = 0; x < cols; x++) {
-        grid[0][x] = 1;
-        grid[rows - 1][x] = 1;
-    }
-    for (let y = 0; y < rows; y++) {
-        grid[y][0] = 1;
-        grid[y][cols - 1] = 1;
-    }
-
-    // 开始递归分割
-    divide(1, 1, cols - 1, rows - 1);
-
-    return grid;
-};
-
-
 function generateMazeDFS(startX, startY) {
     const stack = [[startX, startY]];
     grid = Array.from({ length: SIZE }, () => Array(SIZE).fill(1));
@@ -137,7 +37,7 @@ function generateMazeDFS(startX, startY) {
             stack.pop();
         }
     }
-};
+}
 
 class MinHeap {
     constructor() {
@@ -380,12 +280,7 @@ function drawMaze(path, drawPath = false) {
 }
 
 function setupMaze() {
-    let inputSize = parseInt(document.getElementById('mazeSize').value);
-    if (isNaN(inputSize) || inputSize < 3) {
-        alert('迷宫大小必须是大于等于3的整数');
-        return;
-    }
-    SIZE = inputSize;
+    SIZE = parseInt(document.getElementById('mazeSize').value);
     if (SIZE % 2 === 0) {
         SIZE++; // 确保迷宫大小为奇数
     }
@@ -412,22 +307,16 @@ function setupMaze() {
         generateMazeKruskal();
     }
 
-    // 检查 grid 是否正确初始化
-    if (!grid ||!Array.isArray(grid) || grid.length !== SIZE) {
-        console.error('grid 数组初始化失败');
-        return;
-    }
-
     grid[start[1]][start[0]] = 0;
     grid[end[1]][end[0]] = 0;
     path = findPath(start, end);
     drawPathFlag = false;
     drawMaze(path, drawPathFlag);
-
+    
     const deadEndCount = countDeadEnds(grid);
     const twistiness = calculatePathTwistiness(path);
     const branchCount = countBranches(grid);
-    const difficulty = evaluateMazeDifficulty(path.length, SIZE, deadEndCount, twistiness, branchCount);
+    const difficulty = evaluateMazeDifficulty(path.length, mazeSize, deadEndCount, twistiness, branchCount);
     displayMazeDifficulty(difficulty);
 }
 
