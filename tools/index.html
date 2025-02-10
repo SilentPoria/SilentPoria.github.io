@@ -1,26 +1,164 @@
 <!DOCTYPE html>
-<html>
+<html lang="zh-CN">
 
 <head>
-	<meta charset="utf-8" name="viewport" content="width=device-width,initial-scale=1">
-	<title></title>
-	<link rel="stylesheet" href="./style.css">
-	<script async src="./stat.js"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>项目链接列表</title>
+    <!-- 引入 Font Awesome 图标库 -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <style>
+        /* 全局样式设置 */
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            animation: fadeIn 1s ease;
+        }
+
+        /* 容器样式 */
+        .container {
+            /* 半透明背景 */
+            background-color: rgba(255, 255, 255, 0.15);
+            /* 圆角边框 */
+            border-radius: 25px;
+            /* 较大的模糊背景效果 */
+            backdrop-filter: blur(25px);
+            /* 内发光效果 */
+            box-shadow: 0 0 20px rgba(255, 255, 255, 0.1),
+                        0 0 40px rgba(255, 255, 255, 0.1),
+                        0 0 60px rgba(255, 255, 255, 0.1);
+            /* 边框样式 */
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            padding: 40px;
+            width: 500px;
+            text-align: center;
+            animation: slideUp 0.8s ease;
+        }
+
+        /* 标题样式 */
+        h1 {
+            color: #ffffff;
+            font-size: 36px;
+            margin-bottom: 30px;
+            text-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            letter-spacing: 1px;
+        }
+
+        /* 列表样式 */
+        ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        li {
+            margin-bottom: 25px;
+        }
+
+        /* 链接样式 */
+        a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, #007BFF 0%, #0056b3 100%);
+            color: #ffffff;
+            padding: 20px 30px;
+            border-radius: 12px;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+            position: relative;
+            overflow: hidden;
+        }
+
+        a i {
+            margin-right: 15px;
+            font-size: 24px;
+            transition: transform 0.3s ease;
+        }
+
+        a span {
+            position: relative;
+            z-index: 2;
+        }
+
+        a::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: rgba(255, 255, 255, 0.2);
+            transition: left 0.3s ease;
+        }
+
+        a:hover {
+            transform: scale(1.05);
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+        }
+
+        a:hover i {
+            transform: rotate(360deg);
+        }
+
+        a:hover::before {
+            left: 0;
+        }
+
+        /* 动画效果 */
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+
+        @keyframes slideUp {
+            from {
+                transform: translateY(50px);
+                opacity: 0;
+            }
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        /* 响应式设计 */
+        @media (max-width: 600px) {
+            .container {
+                width: 90%;
+                padding: 30px;
+            }
+            h1 {
+                font-size: 30px;
+            }
+            a {
+                padding: 18px 25px;
+            }
+        }
+    </style>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
 </head>
 
 <body>
-	<h1 style="color:#00f">Tools</h1><br>
-	<div class="index">
-		<a href="../">返回上一页</a><br>
-	</div>
-		<a href="./music_downTools">音乐下载站</a><br>
-	</div>
-	</div>
-		<a href="./music_select">音乐搜索下载站</a><br>
-	</div>
-	</div>
-		<a href="./ncm_to_mp3">ncm转mp3</a><br>
-	</div>
+    <div class="container">
+        <h1>工具</h1>
+        <ul>
+            <li><a href="./ncm_to_mp3"><i class="fa-solid fa-link"></i><span>ncm转MP3</span></a></li>
+            <li><a href="./maze"><i class="fa-solid fa-link"></i><span>迷宫生成器</span></a></li>
+        </ul>
+    </div>
 </body>
 
 </html>
