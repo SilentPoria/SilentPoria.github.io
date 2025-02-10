@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Maze Generator</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            margin: 0;
+            background-color: #f4f4f9;
+        }
+
+        .controls {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            margin-bottom: 20px;
+        }
+
+        label {
+            margin: 5px;
+        }
+
+        input,
+        button,
+        select {
+            padding: 8px 12px;
+            margin: 5px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            font-size: 14px;
+        }
+
+        button {
+            background-color: #007BFF;
+            color: white;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+
+        canvas {
+            border: 2px solid #333;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+        }
+    </style>
+</head>
+
+<body>
+    <div class="controls">
+        <label for="mazeSize">迷宫大小 (奇数):</label>
+        <input type="number" id="mazeSize" value="51" min="3">
+        <label for="cellSize">缩放大小:</label>
+        <input type="number" id="cellSize" value="5" min="1">
+        <label for="algorithmSelect">生成算法:</label>
+        <select id="algorithmSelect">
+            <option value="kruskal">Kruskal算法(普通)</option>
+            <option value="dfs">深度优先算法(困难)</option>
+            <option value="prim">随机Prim算法(非常简单)</option>
+        </select>
+        <label for="randomStartEnd">随机起点和终点</label>
+        <input type="checkbox" id="randomStartEnd">
+        <button id="showPathBtn">显示路径</button>
+        <button id="hidePathBtn">关闭显示路径</button>
+        <button id="redrawBtn">重新绘制</button>
+        <button id="saveMazeBtn">保存迷宫为图片</button>
+    </div>
+    <canvas id="mazeCanvas"></canvas>
+    <div id="mazeDifficulty"></div>
+    <script src="rank.js"></script>
+    <script src="script.js"></script>
+</body>
+
+</html>
